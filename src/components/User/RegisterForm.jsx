@@ -11,7 +11,7 @@ export const RegisterForm = () => {
         const passwordCript = await bcrypt.hash(password, 10)
         const newUser = { name, email, password: passwordCript }
 
-        if (emailExists(email)) {
+        if (await emailExists(email)) {
             alert('Este email já está cadastrado!')
             return
         }
@@ -46,10 +46,8 @@ export const RegisterForm = () => {
 
 const emailExists = async (email) => {
     const response = await api.get(`/users?email=${email}`)
-    if (response.status === 200) {
-        if (response.data.length > 0) {
-            return true
-        }
+    if (response.data.length > 0) {
+        return true
     }
     return false
 }
