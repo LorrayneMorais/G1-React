@@ -1,0 +1,27 @@
+.cart {
+    width: 100%;
+    max-width: 330px;
+    background-color: white;
+    color: black;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 100px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform: translate(110%,0);
+}
+
+.cart-content {
+    flex-grow: 1;
+    overflow: auto;
+}
+
+.cart-resume{
+    font-size: 1.2rem;
+    font-weight: 200;
+    padding: 35px 0 15px;
+    border-top: 1px solid #ddd;
+}

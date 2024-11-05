@@ -1,11 +1,11 @@
 import { useContext } from "react"
 import { SignUpContext } from "../../contexts/SignUpContext/SignUpContext"
-import { api } from "../../api/api"
+import api from "../../api/api"
 import bcrypt from 'bcryptjs'
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 
 export const LoginForm = () => {
-    const { email, password, setEmail, setPassword } = useContext(SignUpContext)
+    const { email, password, setEmail, setPassword, setLogged } = useContext(SignUpContext)
     const history = useHistory()
 
 
@@ -23,6 +23,7 @@ export const LoginForm = () => {
 
         if (validPassword) {
             localStorage.setItem('userId', user.id)
+            setLogged(true)
             history.push('/home')
         } else {
             alert('Email or password invalid!')
