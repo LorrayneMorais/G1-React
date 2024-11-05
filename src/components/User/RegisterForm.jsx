@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { SignUpContext } from "../../contexts/SignUpContext/SignUpContext"
-import { api } from '../../api/api'
+import api from '../../api/api'
 import bcrypt from 'bcryptjs'
 
 export const RegisterForm = () => {
@@ -12,44 +12,39 @@ export const RegisterForm = () => {
         const newUser = { name, email, password: passwordCript }
 
         if (await emailExists(email)) {
-            alert('Este email já está cadastrado!')
+            alert('This email is already registered!')
             return
         }
 
         const response = await api.post('/users', newUser)
 
         if (response.status === 201) {
-            alert('Usuário criado com sucesso!')
+            alert('User created successfully!')
         } else {
-            alert('Erro ao criar o usuário')
+            alert('Error creating user')
         }
 
     }
 
     return (
-        <>
-            <form onSubmit={handleRegisterSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2vh' }}>
-                <label htmlFor="name" >Name:
-                    <input required type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
-                </label>
-                <label htmlFor="email">Email:
-                    <input required type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                </label>
-                <label htmlFor="password">Password:
-                    <input required type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                </label>
-                <button type="submit" >Register</button>
-            </form>
-        </>
+        <form onSubmit={handleRegisterSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2vh', width: '100%' }}>
+            <label htmlFor="name" >Name:
+                <input required type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+            </label>
+            <label htmlFor="email">Email:
+                <input required type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            </label>
+            <label htmlFor="password">Password:
+                <input required type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            </label>
+            <button type="submit" >Register</button>
+        </form>
     )
 }
 
 const emailExists = async (email) => {
     const response = await api.get(`/users?email=${email}`)
-    if (response.data.length > 0) {
-        return true
-    }
-    return false
+    return response.data.length > 0 ? true : false
 }
 
 
