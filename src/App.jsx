@@ -1,12 +1,15 @@
 import './App.css';
 import React from 'react';
-import { CartButton } from '../src/components/Cart/CartButton/CartButton';
+import { CartButton } from './components/cart/CartButton/CartButton';
+import { Cart } from './pages/Cart/Cart';
+
 
 
 function App() {
   return (
     <>
-      <CartButton />
+    <CartButton />
+    <Cart />
     </>
   );
 }

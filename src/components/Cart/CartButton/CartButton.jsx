@@ -6,6 +6,9 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 
 export function CartButton() {
     return (
-        <button type="button"><AiOutlineShoppingCart/></button>
+        <button type="button" className="cart__button">
+            <AiOutlineShoppingCart/>
+            <span className="cart-status"></span>
+        </button>
     );
 }
