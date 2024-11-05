@@ -1,21 +1,22 @@
 import './App.css';
-import React from 'react';
-import { CartButton } from './components/cart/CartButton/CartButton';
-import { Cart } from './pages/Cart/Cart';
-import { ProductProvider } from './contexts/CartContext/ProductContext';
+import { Login } from './pages/Login/Login'
 import { Products } from './pages/Products/Products';
+import { Signup } from './pages/Signup/Signup'
+import { Cart } from './pages/Cart/Cart'
+import { BrowserRouter, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min'
 
 
 
 function App() {
   return (
-    <>
-    <ProductProvider>
-    <CartButton />
-    <Cart />
-    <Products />
-    </ProductProvider>
-    </>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/signup' component={Signup} />
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/home' component={Products} />
+        <Route exact path='/cart' component={Cart} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 

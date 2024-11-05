@@ -1,32 +1,30 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import './Products.css';
 
 import { ProductCard } from '../../components/product/ProductCard';
 import api from '../../api/api';
 import { ProductContext } from '../../contexts/CartContext/ProductContext';
 
-
-
-
-
 export function Products() {
 
-    const {products,setProducts} = useContext(ProductContext);
+    const { products, setProducts } = useContext(ProductContext);
+    const userId = localStorage.getItem('userId');
+    console.log(userId);
 
     getAllProducts(setProducts);
 
     return (
         <section className="products container">
-            {products.map((product) => <ProductCard data={{imgUrl:product.imgUrl, name:product.name, price:product.price}} />)}
+            {products.map((product) => <ProductCard data={{ imgUrl: product.imgUrl, name: product.name, price: product.price }} key={product.id} />)}
         </section>
     )
 }
 
 const getAllProducts = async (setProducts) => {
     const response = await api.get('/products');
-    if(response.status === 200){
+    if (response.status === 200) {
         setProducts(response.data);
-    }else{
+    } else {
         console.log('Error');
     }
 }

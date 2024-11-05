@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { SignUpContext } from "../../contexts/SignUpContext/SignUpContext"
-import { api } from "../../api/api"
+import api from "../../api/api"
 import bcrypt from 'bcryptjs'
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 
