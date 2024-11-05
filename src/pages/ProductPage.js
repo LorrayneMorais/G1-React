@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductDetail from '../components/Product/ProductDetail';
+import ProductDetail from "...G1-React/src/components/product/ProductDetail";
 import { useParams } from 'react-router-dom';
 
 function ProductPage() {

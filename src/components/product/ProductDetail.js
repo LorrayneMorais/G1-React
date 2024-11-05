@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Rating from './Rating';
+import Rating from "...G1-React/src/components/Product/Rating";
 import { fetchProductById } from '../../api/api';
 import '../../styles/ProductDetail.css';
 import formatPrice from '../../utils/formatPrice';
