@@ -6,6 +6,7 @@ const SignupProvider = ({ children }) => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [logged, setLogged] = useState(false)
     return (
 
         <SignUpContext.Provider value={{
@@ -14,7 +15,9 @@ const SignupProvider = ({ children }) => {
             password,
             setName,
             setEmail,
-            setPassword
+            setPassword,
+            logged,
+            setLogged
         }
         }>
             {children}
