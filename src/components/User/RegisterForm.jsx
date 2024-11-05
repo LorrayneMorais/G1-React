@@ -36,7 +36,7 @@ export const RegisterForm = () => {
                     <input required type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </label>
                 <label htmlFor="password">Password:
-                    <input required type="text" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <input required type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </label>
                 <button type="submit" >Register</button>
             </form>
