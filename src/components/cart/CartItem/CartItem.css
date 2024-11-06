@@ -31,7 +31,21 @@
     position: absolute;
     top: 0;
     right: 0;
-    color: white;
+    color: var(--color1);
     font-size: 12px;
     cursor: pointer;
+}
+
+.card__quantity{
+    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    border-radius: 20%;
+    text-align: center;
+    text-decoration: double;
+    background-color: antiquewhite;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
 }

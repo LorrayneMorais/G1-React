@@ -2,5 +2,6 @@
     padding: 120px 20px 50px;
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    z-index: 1;
 }

@@ -16,14 +16,16 @@ const PrivateRoute = ({ path, component }) => {
 
 function App() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path='/signup' component={Signup} />
-        <Route exact path='/login' component={Login} />
-        <Route exact path='/notLogged' component={NotLogged} />
-        <PrivateRoute exact path='/home' component={Products} />
-      </Switch>
-    </BrowserRouter>
+    <div>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/signup' component={Signup} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/notLogged' component={NotLogged} />
+          <Route exact path='/home' component={Products} />
+        </Switch>
+      </BrowserRouter>
+    </div>
   );
 }
 

@@ -1,8 +1,10 @@
+@import url("../../styles/GlobalStyles.css");
+
 .cart {
     width: 100%;
     max-width: 330px;
-    background-color: rgb(215, 119, 119);
-    color: black;
+    background-color: var(--color4) ;
+    color: var(--color2);
     height: 100vh;
     position: fixed;
     top: 0;
@@ -12,12 +14,14 @@
     flex-direction: column;
     justify-content: space-between;
     z-index: 1;
-    /*transform: translate(110%,0);*/
+    transform: translate(110%,0);
+    transition: all 400ms ease;
+    overflow-y: auto;
 }
 
 .cart-contents {
     flex-grow: 1;
-    overflow: auto;
+    overflow-y: auto;
 }
 
 .cart-contents .cart-item:last-child {
@@ -25,9 +29,43 @@
 }
 
 .cart-resume{
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    gap: 10px;
     font-size: 1.2rem;
     font-weight: 200;
     padding: 35px 0 15px;
     border-top: 1px solid #ddd;
 }
 
+.cart-resume h3{
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.cart-resume h4{
+    font-weight: 800;
+    font-size: 26px;
+}
+
+.cart-resume-title{
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 300;
+    background-color: var(--color2);
+    color: var(--color4);
+    border-radius: 10px;
+}
+
+.cart-resume-title:hover{
+    background-color: var(--color3);
+    scale: 1.1;
+    cursor: pointer;
+}
+
+.cart--active {
+    transform: translate(0,0);
+}

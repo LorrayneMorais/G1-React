@@ -5,7 +5,7 @@ import { ProductContext } from '../../contexts/CartContext/ProductContext';
 import PropTypes, { object } from 'prop-types';
 
 export function ProductCard({ data }) {
-    const { imgUrl, quantity, name, price, id } = data;
+    const { imgUrl, name, price, id } = data;
     const { cart, setCart } = useContext(ProductContext);
 
     const handleAddToCart = () => {
@@ -44,6 +44,5 @@ ProductCard.propTypes = {
         imgUrl: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         price: PropTypes.string.isRequired,
-        quantity: PropTypes.number.isRequired,
     }).isRequired,
 };
