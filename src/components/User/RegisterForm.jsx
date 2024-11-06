@@ -32,7 +32,7 @@ export const RegisterForm = () => {
 
     return (
         <div className="cadastro">
-            <div className="container">
+            <div className="register-container">
                 <header>
                     <img src={Logo} alt="Logo" className="logo" />
                     <Link to="/" className="back-button">Entrar</Link>
