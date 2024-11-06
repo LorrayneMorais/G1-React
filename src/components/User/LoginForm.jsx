@@ -32,33 +32,35 @@ export const LoginForm = () => {
         }
     }
     return (
-        <div className="login-container">
-            <div className="login-box">
-                <div className="form-section">
-                    <h2>FAÇA SEU LOGIN.</h2>
-                    <form onSubmit={handleLoginSubmit}>
-                        <label htmlFor="email">Email</label>
-                        <input
-                            required
-                            type="email"
-                            id="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                        <label htmlFor="password">Senha</label>
-                        <input
-                            required
-                            type="password"
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                        <button type="submit">Entrar</button>
-                        <Link to="/signup"><p className="create-account">Criar conta</p></Link>
-                    </form>
-                </div>
-                <div className="logo-section">
-                    <img src={Logo} alt="Hora da Leitura Logo" />
+        <div className="loginpage">
+            <div className="login-container">
+                <div className="login-box">
+                    <div className="form-section">
+                        <h2>FAÇA SEU LOGIN.</h2>
+                        <form onSubmit={handleLoginSubmit}>
+                            <label htmlFor="email">Email</label>
+                            <input
+                                required
+                                type="email"
+                                id="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <label htmlFor="password">Senha</label>
+                            <input
+                                required
+                                type="password"
+                                id="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <button className="botaoLogin" type="submit">Entrar</button>
+                            <Link to="/signup"><p className="createc">Criar conta</p></Link>
+                        </form>
+                    </div>
+                    <div className="logoimg">
+                        <img src={Logo} alt="Hora da Leitura Logo" />
+                    </div>
                 </div>
             </div>
         </div>

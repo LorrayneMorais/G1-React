@@ -7,7 +7,7 @@ import { ProductContext } from "../../contexts/CartContext/ProductContext";
 export function Checkout() {
     const { id, cart } = useContext(ProductContext);
     const history = useHistory();
-    
+
     const [form, setForm] = useState({
         cardNumber: "",
         cardName: "",
@@ -17,7 +17,7 @@ export function Checkout() {
     });
 
     const fetchCartItems = async () => {
-        cart.map((item) => {item})
+        cart.map((item) => { item })
     };
 
     const totalPayment = () => cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
@@ -62,7 +62,7 @@ export function Checkout() {
     }, [form]);
 
     return (
-        <>
+        <div className="check">
             <section className="checkout-section">
                 <form className="card-form">
                     <input
@@ -74,7 +74,7 @@ export function Checkout() {
                     />
                     <input
                         type="text"
-                        placeholder="Nome(como está escrito no cartão)"
+                        placeholder="Nome (como está no cartão)"
                         name="cardName"
                         value={form.cardName}
                         onChange={handleInputChange}
@@ -104,12 +104,12 @@ export function Checkout() {
                         Finalizar compra
                     </button>
                 </form>
-                
+
                 <div className="cart-confirmation">
                     <h2>Confirmação de compra</h2>
                     {cart.map(({ id, name, price, quantity, imgUrl }) => (
                         <div key={id} className="cart-sec">
-                            <img src={imgUrl} alt="" />
+                            <img src={imgUrl} alt={name} />
                             <p>{name}</p>
                             <div>
                                 <p>R$ {(price * quantity).toFixed(2)}</p>
@@ -120,6 +120,6 @@ export function Checkout() {
                     <p>Valor total: R$ {totalPayment()}</p>
                 </div>
             </section>
-        </>
+        </div>
     );
 }

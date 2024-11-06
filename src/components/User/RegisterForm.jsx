@@ -2,6 +2,10 @@ import { useContext } from "react"
 import { SignUpContext } from "../../contexts/SignUpContext/SignUpContext"
 import api from '../../api/api'
 import bcrypt from 'bcryptjs'
+import { Link } from "react-router-dom/cjs/react-router-dom.min"
+import "./RegisterForm.css"
+import Logo from "../../assets/images/Logo.png"
+
 
 export const RegisterForm = () => {
     const { name, email, password, setName, setEmail, setPassword } = useContext(SignUpContext)
@@ -27,25 +31,31 @@ export const RegisterForm = () => {
     }
 
     return (
-        <form onSubmit={handleRegisterSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2vh', width: '100%' }}>
-            <label htmlFor="name" >Name:
-                <input required type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
-            </label>
-            <label htmlFor="email">Email:
-                <input required type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            </label>
-            <label htmlFor="password">Password:
-                <input required type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            </label>
-            <button type="submit" >Register</button>
-        </form>
-    )
-}
-
+        <div className="cadastro">
+            <div className="container">
+                <header>
+                    <img src={Logo} alt="Logo" className="logo" />
+                    <Link to="/" className="back-button">Entrar</Link>
+                </header>
+                <form onSubmit={handleRegisterSubmit} className="register-form">
+                    <h2>Cadastro</h2>
+                    <label htmlFor="name">Nome:
+                        <input required type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+                    </label>
+                    <label htmlFor="email">Email:
+                        <input required type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    </label>
+                    <label htmlFor="password">Senha:
+                        <input required type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    </label>
+                    <button type="submit" className="botaoCadastro">Cadastre-se</button>
+                    <Link to="/" className="login-link">Entrar</Link>
+                </form>
+            </div>
+        </div>
+    );
+};
 const emailExists = async (email) => {
     const response = await api.get(`/users?email=${email}`)
     return response.data.length > 0 ? true : false
 }
-
-
-
