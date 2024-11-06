@@ -3,8 +3,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 5px;
     border: none;
-    background-color: none;
+    background-color: transparent;
+    color: white;
+    font-size: 2.5rem;
     cursor: pointer;
     position: relative;
     margin-left: 20px;
@@ -12,7 +15,7 @@
 }
 
 .cart-status{
-    background-color: red;
+    background-color: #213359;
     width: 15px;
     height: 15px;
     position: absolute;

@@ -10,7 +10,10 @@ const ProductProvider = ({ children }) => {
     const[category, setCategory] = useState('');
     const [quantity, setQuantity] = useState(0);
     const [review, setReview] = useState('');
+    const [loading, setLoading] = useState(true);
     const [products, setProducts] = useState([]);
+    const [cart, setCart] = useState([]);
+    const [isCartVisible, setIsCartVisible] = useState(false);
 
     return (
         <ProductContext.Provider value={{
@@ -30,6 +33,12 @@ const ProductProvider = ({ children }) => {
             setReview,
             products,
             setProducts,
+            cart,
+            setCart,
+            isCartVisible,
+            setIsCartVisible,
+            loading,
+            setLoading,
         }}>
             {children}
         </ProductContext.Provider>
