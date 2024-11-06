@@ -1,13 +1,10 @@
 
-import React from 'react';
 import { Link } from 'react-router-dom';
-
 import React, { useContext } from 'react';
-
 import './ProductCard.css';
 import { MdAddShoppingCart } from "react-icons/md";
 import { ProductContext } from '../../contexts/CartContext/ProductContext';
-import PropTypes, { object } from 'prop-types';
+import PropTypes from 'prop-types';
 
 export function ProductCard({ data }) {
     const { imgUrl, name, price, id } = data;

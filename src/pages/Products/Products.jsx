@@ -31,14 +31,6 @@ useEffect(() => {
         }
     };
 
-
-    return (
-        <section className="products container">
-            {products.map((product) => <ProductCard data={{ id: product.id, imgUrl: product.imgUrl, name: product.name, price: product.price }} key={product.id} />)}
-        </section>
-    )
-}
-
     getAllProducts();
 }, [setProducts]);
 
@@ -46,16 +38,17 @@ useEffect(() => {
 return (
     (loading) ? <Loading /> :
     <div>
-    <Header/>
+    <Header />
     <Cart />
     <section className="products container">
         {products.map((product) => (
             <ProductCard key={product.id}
-            data={{id:Number(product.id), imgUrl: product.imgUrl, name: product.name, price:product.price}}
+            data={{id:Number(product.id), imgUrl: product.imgUrl, name: product.name, price: product.price }}
             />
         ))}
     </section>
-    <Footer/>
+    <Footer />
     </div>
     );
 }
+
