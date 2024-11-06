@@ -11,6 +11,7 @@ const ProductProvider = ({ children }) => {
     const [quantity, setQuantity] = useState(0);
     const [review, setReview] = useState('');
     const [products, setProducts] = useState([]);
+    const [cart, setCart] = useState([]);
 
     return (
         <ProductContext.Provider value={{
@@ -30,6 +31,8 @@ const ProductProvider = ({ children }) => {
             setReview,
             products,
             setProducts,
+            cart,
+            setCart,
         }}>
             {children}
         </ProductContext.Provider>

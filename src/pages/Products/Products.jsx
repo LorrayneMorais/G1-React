@@ -1,30 +1,49 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Products.css';
-
 import { ProductCard } from '../../components/product/ProductCard';
 import api from '../../api/api';
 import { ProductContext } from '../../contexts/CartContext/ProductContext';
+import { Loading } from '../../components/Loading/Loading';
+import { Cart } from '../Cart/Cart';
 
 export function Products() {
+const { products, setProducts } = useContext(ProductContext);
+const [loading, setLoading] = useState(true);
 
-    const { products, setProducts } = useContext(ProductContext);
-    const userId = localStorage.getItem('userId');
-    console.log(userId);
+useEffect(() => {
+    const getAllProducts = async () => {
+        const response = await api.get('/products');
+        if (response.status === 200) {
+            const fetchedProducts = response.data;
 
-    getAllProducts(setProducts);
+            // Evitar duplicação de produtos no estado
+            setProducts((prevProducts) => {
+                const newProducts = fetchedProducts.filter(
+                    (product) => !prevProducts.some((p) => p.id === product.id)
+                );
+                return [...prevProducts, ...newProducts];
+            });
 
-    return (
-        <section className="products container">
-            {products.map((product) => <ProductCard data={{ imgUrl: product.imgUrl, name: product.name, price: product.price }} key={product.id} />)}
-        </section>
-    )
-}
+            setLoading(false);
+        } else {
+            console.log('Error');
+        }
+    };
 
-const getAllProducts = async (setProducts) => {
-    const response = await api.get('/products');
-    if (response.status === 200) {
-        setProducts(response.data);
-    } else {
-        console.log('Error');
-    }
+    getAllProducts();
+}, [setProducts]);
+
+return (
+    (loading) ? <Loading /> :
+    <div>
+    <Cart />
+    <section className="products container">
+        {products.map((product) => (
+            <ProductCard key={product.id}
+            data={{id:product.id, imgUrl: product.imgUrl, name: product.name, price: product.price }}
+            />
+        ))}
+    </section>
+    </div>
+    );
 }
