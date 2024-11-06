@@ -6,8 +6,6 @@ export const Login = () => {
     return (
         <>
             <LoginForm />
-            <br /> <hr />
-            <button onClick={() => { history.push('/home') }} >Go To SignUp</button>
         </>
     )
 }

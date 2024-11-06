@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { SignUpContext } from "../../contexts/SignUpContext/SignUpContext"
 import api from "../../api/api"
 import bcrypt from 'bcryptjs'
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min"
 import "./LoginForm.css"
 import Logo from "../../assets/images/Logo.png"
 
@@ -53,7 +53,7 @@ export const LoginForm = () => {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         <button type="submit">Entrar</button>
-                        <p className="create-account">Criar conta</p>
+                        <Link to="/signup"><p className="create-account">Criar conta</p></Link>
                     </form>
                 </div>
                 <div className="logo-section">
