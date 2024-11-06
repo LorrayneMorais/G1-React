@@ -7,6 +7,7 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom/cjs/rea
 import { SignUpContext } from './contexts/SignUpContext/SignUpContext';
 import { useContext } from 'react';
 import { NotLogged } from './pages/notLogged/notLogged';
+import ProductPage from './pages/ProdutPage/ProductPage';
 
 const PrivateRoute = ({ path, component }) => {
   const { logged } = useContext(SignUpContext)
@@ -24,6 +25,7 @@ function App() {
         <Route exact path='/notLogged' component={NotLogged} />
         <PrivateRoute exact path='/home' component={Products} />
         <PrivateRoute exact path='/cart' component={Cart} />
+        <PrivateRoute exact path='/product/:produtoId' component={ProductPage} />
       </Switch>
     </BrowserRouter>
   );
