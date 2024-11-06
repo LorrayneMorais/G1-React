@@ -15,7 +15,7 @@ export function Products() {
 
     return (
         <section className="products container">
-            {products.map((product, index) => <ProductCard data={{ id: product.id, imgUrl: product.imgUrl, name: product.name, price: product.price }} key={index} />)}
+            {products.map((product) => <ProductCard data={{ id: product.id, imgUrl: product.imgUrl, name: product.name, price: product.price }} key={product.id} />)}
         </section>
     )
 }
