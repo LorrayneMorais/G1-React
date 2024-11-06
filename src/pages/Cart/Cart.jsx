@@ -4,10 +4,12 @@ import "./Cart.css";
 import { CartItem } from "../../components/cart/CartItem/CartItem";
 import { ProductContext } from "../../contexts/CartContext/ProductContext";
 import formatPrice from "../../utils/PriceFormatter";
+import { useHistory } from "react-router-dom";
 
 
 export function Cart() {
     const {cart, isCartVisible} = useContext(ProductContext);
+    const history = useHistory();
 
     const totalPrice = cart.reduce((acc, product) => {
         return acc + Number(product.quantity) * parseFloat(product.price);
@@ -22,7 +24,7 @@ export function Cart() {
                 <h3>Total</h3>
                 <h4>{formatPrice(parseFloat(totalPrice))}</h4>
             </div>
-            <h3 className="cart-resume-title">Finalizar</h3>
+            <button className="cart-resume-title" onClick={() => { history.push('/checkout') }}>Finalizar</button>
         </section>
     );
 }
