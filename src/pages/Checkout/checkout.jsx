@@ -59,6 +59,8 @@ export default function Checkout() {
         fetchCartItems();
     }, []);
 
+    const [isButtonDisabled, setButtonDisabled] = useState(true);
+
     useEffect(() => {
         const validateForm = () => (
             form.cardNumber.length === 16 &&
