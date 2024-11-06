@@ -6,6 +6,8 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom/cjs/rea
 import { SignUpContext } from './contexts/SignUpContext/SignUpContext';
 import { useContext } from 'react';
 import { NotLogged } from './pages/notLogged/notLogged';
+import { Checkout } from './pages/Checkout/checkout';
+
 
 const PrivateRoute = ({ path, component }) => {
   const { logged } = useContext(SignUpContext)
@@ -23,6 +25,7 @@ function App() {
           <Route exact path='/login' component={Login} />
           <Route exact path='/notLogged' component={NotLogged} />
           <Route exact path='/home' component={Products} />
+          <Route exact path='/checkout' component={Checkout} />
         </Switch>
       </BrowserRouter>
     </div>
