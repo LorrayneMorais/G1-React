@@ -3,10 +3,19 @@ import { useHistory } from "react-router-dom";
 import api from "../../api/api";
 import "./Checkout.css";
 import { ProductContext } from "../../contexts/CartContext/ProductContext";
+import { SignUpContext } from "../../contexts/SignUpContext/SignUpContext";
 
 export function Checkout() {
-    const { id, cart, setProducts } = useContext(ProductContext);
+    const { cart, products } = useContext(ProductContext);
+    const { email } = useContext(SignUpContext)
+    const [user, setUser] = useState({});
     const history = useHistory();
+
+    const getUserByEmail = async () => {
+        const response = await api.get(`/users?email=${email}`);
+        setUser(response.data[0]);
+    };
+    getUserByEmail()
 
     const [form, setForm] = useState({
         cardNumber: "",
@@ -26,26 +35,6 @@ export function Checkout() {
         setForm(prevForm => ({ ...prevForm, [name]: value }));
     };
 
-    const handleCheckout = async () => {
-        const invoice = {
-            idUser: id,
-            valorTotal: totalPayment(),
-            itens: cart.map(({ id, quantity }) => ({ idProduto: id, quantidade: quantity }))
-        };
-
-        try {
-            const { status } = await api.post('/invoices', invoice);
-            if (status === 200) {
-                alert("Compra realizada com sucesso!");
-                history.push(`/user/${id}`);
-            }
-        } catch (error) {
-            console.error("Erro ao realizar o pagamento:", error);
-            alert("Erro ao realizar o pagamento");
-        }
-        history.push('/final');
-    };
-
     useEffect(() => {
         fetchCartItems();
     }, []);
@@ -62,10 +51,24 @@ export function Checkout() {
         setButtonDisabled(!validateForm());
     }, [form]);
 
-    const handleFinal = () => {
-       cart.map(async(item) => {
-            const response = await api.patch(`/products/${item.id}`,{quantity:item.quantity})   
-       }) 
+    const handleFinal = async () => {
+        let qtd = 0
+        cart.map(async (item) => {
+            console.log(item);
+
+            products.map(async (product) => {
+                if (product.id == item.id) {
+                    qtd = product.quantity - item.quantity
+                    product.quantity = qtd
+                    const response = await api.patch(`/products/${item.id}`, { quantity: qtd })
+                }
+            })
+        })
+        await api.post('/orders', {
+            userId: user.id,
+            products: cart
+        })
+        history.push(`/final/${user.id}`)
     }
 
     return (
@@ -126,7 +129,7 @@ export function Checkout() {
                             </option>
                         ))}
                     </select>
-                    <button className="finish-button" type="button" disabled={isButtonDisabled} onClick={handleCheckout}>
+                    <button className="finish-button" type="button" onClick={handleFinal}>
                         Finalizar compra
                     </button>
                 </form>
