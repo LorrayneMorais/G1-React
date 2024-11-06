@@ -1,16 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import api from "../../api/api";
-import { AuthContext } from "../../context/AuthContext";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
-import "./checkout.css";
+import "./Checkout.css";
+import { ProductContext } from "../../contexts/CartContext/ProductContext";
 
-export default function Checkout() {
-    const { id } = useContext(AuthContext);
+export function Checkout() {
+    const { id, cart } = useContext(ProductContext);
     const history = useHistory();
     
-    const [cart, setCart] = useState([]);
     const [form, setForm] = useState({
         cardNumber: "",
         cardName: "",
@@ -20,14 +17,7 @@ export default function Checkout() {
     });
 
     const fetchCartItems = async () => {
-        try {
-            const { data, status } = await api.get('/cart');
-            if (status === 200) setCart(data);
-            else alert('Erro ao buscar itens');
-        } catch (error) {
-            console.error("Erro ao buscar itens:", error);
-            alert("Erro ao buscar itens do carrinho");
-        }
+        cart.map((item) => {item})
     };
 
     const totalPayment = () => cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
@@ -73,7 +63,6 @@ export default function Checkout() {
 
     return (
         <>
-            <Header />
             <section className="checkout-section">
                 <form className="card-form">
                     <input
@@ -118,8 +107,9 @@ export default function Checkout() {
                 
                 <div className="cart-confirmation">
                     <h2>Confirmação de compra</h2>
-                    {cart.map(({ id, name, price, quantity }) => (
+                    {cart.map(({ id, name, price, quantity, imgUrl }) => (
                         <div key={id} className="cart-sec">
+                            <img src={imgUrl} alt="" />
                             <p>{name}</p>
                             <div>
                                 <p>R$ {(price * quantity).toFixed(2)}</p>
@@ -130,7 +120,6 @@ export default function Checkout() {
                     <p>Valor total: R$ {totalPayment()}</p>
                 </div>
             </section>
-            <Footer />
         </>
     );
 }
