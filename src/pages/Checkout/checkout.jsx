@@ -5,9 +5,9 @@ import "./Checkout.css";
 import { ProductContext } from "../../contexts/CartContext/ProductContext";
 
 export function Checkout() {
-    const { id, cart } = useContext(ProductContext);
+    const { id, cart, setProducts } = useContext(ProductContext);
     const history = useHistory();
-    
+
     const [form, setForm] = useState({
         cardNumber: "",
         cardName: "",
@@ -17,7 +17,7 @@ export function Checkout() {
     });
 
     const fetchCartItems = async () => {
-        cart.map((item) => {item})
+        cart.map((item) => { item })
     };
 
     const totalPayment = () => cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
@@ -30,7 +30,7 @@ export function Checkout() {
         const invoice = {
             idUser: id,
             valorTotal: totalPayment(),
-            itens: cart.map(({ id, quantity }) => ({ idProduto: id, quantidade: quantity })),
+            itens: cart.map(({ id, quantity }) => ({ idProduto: id, quantidade: quantity }))
         };
 
         try {
@@ -43,6 +43,7 @@ export function Checkout() {
             console.error("Erro ao realizar o pagamento:", error);
             alert("Erro ao realizar o pagamento");
         }
+        history.push('/final');
     };
 
     useEffect(() => {
@@ -61,64 +62,74 @@ export function Checkout() {
         setButtonDisabled(!validateForm());
     }, [form]);
 
+    const handleFinal = () => {
+       cart.map(async(item) => {
+            const response = await api.patch(`/products/${item.id}`,{quantity:item.quantity})   
+       }) 
+    }
+
     return (
         <>
             <section className="checkout-section">
+                <div className="cart-confirmation">
+                    <h2>Confirmação dos itens</h2>
+                    <div className="books-container">
+                        {cart.map(({ id, name, price, quantity, imgUrl }) => (
+                            <div key={id} className="cart-sec">
+                                <img src={imgUrl} alt="" />
+                                <p>{name}</p>
+                                <div className="quantity-price">
+                                    <p>Quantidade: {quantity}</p>
+                                    <p>Total: R$ {(price * quantity).toFixed(2)}</p>
+                                </div>
+                            </div>
+                        ))}
+                        <p>Valor total: R$ {totalPayment()}</p>
+                    </div>
+                </div>
+                <div className="card-form-title"><h2>Confirmação do pagamento:</h2></div>
                 <form className="card-form">
-                    <input
-                        type="text"
-                        placeholder="Número do cartão"
-                        name="cardNumber"
-                        value={form.cardNumber}
-                        onChange={handleInputChange}
-                    />
-                    <input
-                        type="text"
-                        placeholder="Nome(como está escrito no cartão)"
-                        name="cardName"
-                        value={form.cardName}
-                        onChange={handleInputChange}
-                    />
-                    <input
-                        type="date"
-                        placeholder="Data de validade"
-                        name="cardDate"
-                        value={form.cardDate}
-                        onChange={handleInputChange}
-                    />
-                    <input
-                        type="text"
-                        placeholder="CVV"
-                        name="cardCVV"
-                        value={form.cardCVV}
-                        onChange={handleInputChange}
-                    />
-                    <select name="installments" value={form.installments} onChange={handleInputChange}>
+                    <div className="input-container">
+                        <input
+                            type="text"
+                            placeholder="Número do cartão"
+                            name="cardNumber"
+                            value={form.cardNumber}
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Nome(como está escrito no cartão)"
+                            name="cardName"
+                            value={form.cardName}
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            type="date"
+                            placeholder="Data de validade"
+                            name="cardDate"
+                            value={form.cardDate}
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            type="text"
+                            placeholder="CVV"
+                            name="cardCVV"
+                            value={form.cardCVV}
+                            onChange={handleInputChange}
+                        />
+                    </div>
+                    <select className="installments " name="installments" value={form.installments} onChange={handleInputChange}>
                         {[...Array(6)].map((_, i) => (
                             <option key={`installment-${i + 1}`} value={i + 1}>
                                 {i + 1}x de R$ {(totalPayment() / (i + 1)).toFixed(2)}
                             </option>
                         ))}
                     </select>
-                    <button type="button" disabled={isButtonDisabled} onClick={handleCheckout}>
+                    <button className="finish-button" type="button" disabled={isButtonDisabled} onClick={handleCheckout}>
                         Finalizar compra
                     </button>
                 </form>
-                
-                <div className="cart-confirmation">
-                    <h2>Confirmação de compra</h2>
-                    {cart.map(({ id, name, price, quantity, imgUrl }) => (
-                        <div key={id} className="cart-sec">
-                            <img src={imgUrl} alt="" />
-                            <p>{name}</p>
-                            <div>
-                                <p>R$ {(price * quantity).toFixed(2)}</p>
-                                <p>Quantidade: {quantity}</p>
-                            </div>
-                        </div>
-                    ))}
-                    <p>Valor total: R$ {totalPayment()}</p>
-                </div>
             </section>
         </>
     );

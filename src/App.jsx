@@ -7,6 +7,7 @@ import { SignUpContext } from './contexts/SignUpContext/SignUpContext';
 import { useContext } from 'react';
 import { NotLogged } from './pages/notLogged/notLogged';
 import { Checkout } from './pages/Checkout/checkout';
+import { Final } from './pages/FinalPage/Final';
 
 
 const PrivateRoute = ({ path, component }) => {
@@ -26,6 +27,7 @@ function App() {
           <Route exact path='/notLogged' component={NotLogged} />
           <Route exact path='/home' component={Products} />
           <Route exact path='/checkout' component={Checkout} />
+          <Route exact path='/final/:id' component={Final} />
         </Switch>
       </BrowserRouter>
     </div>
