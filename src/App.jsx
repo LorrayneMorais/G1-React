@@ -2,7 +2,6 @@ import './App.css';
 import { Login } from './pages/Login/Login'
 import { Products } from './pages/Products/Products';
 import { Signup } from './pages/Signup/Signup'
-import { Cart } from './pages/Cart/Cart'
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min'
 import { SignUpContext } from './contexts/SignUpContext/SignUpContext';
 import { useContext } from 'react';
@@ -23,7 +22,6 @@ function App() {
         <Route exact path='/login' component={Login} />
         <Route exact path='/notLogged' component={NotLogged} />
         <PrivateRoute exact path='/home' component={Products} />
-        <PrivateRoute exact path='/cart' component={Cart} />
       </Switch>
     </BrowserRouter>
   );
