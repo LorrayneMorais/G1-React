@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { getProductById } from '../../api/api';
-import '../../styles/ProductDetail.css';
+import './ProductDetail.css'
 import { formatPrice } from '../../utils/PriceFormatter';
 import Rating from '../Rating/Rating';
 

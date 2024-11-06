@@ -14,8 +14,8 @@ export const getProductById = async (id) => {
     return response.data;
 };
 
-export const submitProductRating = async (productId, rating, comment = '') => {
-    const response = await api.post(`/products/${productId}/rate`, {
+export const submitProductRating = async (productId, rating, comment) => {
+    const response = await api.patch(`/products/${productId}`, {
         rating,
         comment,
     });
