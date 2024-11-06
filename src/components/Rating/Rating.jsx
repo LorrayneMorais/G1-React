@@ -15,8 +15,7 @@ function Rating({ productId }) {
       await submitProductRating(productId, rating, comment);
       setSuccessMessage('Avaliação enviada com sucesso!');
       setRating(0);
-      setComment('');      
-      
+      setComment('');
       setTimeout(() => setSuccessMessage(''), 3000);
     } catch (error) {
       console.error('Erro ao enviar avaliação:', error);

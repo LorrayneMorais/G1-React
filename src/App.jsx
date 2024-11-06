@@ -30,6 +30,7 @@ function App() {
           <Route exact path='/login' component={Login} />
           <Route exact path='/notLogged' component={NotLogged} />
           <Route exact path='/home' component={Products} />
+          <Route exact path='/product/:id' component={ProductPage} />
           <Route exact path='/checkout' component={Checkout} />
         </Switch>
       </BrowserRouter>
