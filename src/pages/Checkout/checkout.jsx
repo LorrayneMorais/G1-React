@@ -13,6 +13,9 @@ export function Checkout() {
 
     const getUserByEmail = async () => {
         const response = await api.get(`/users?email=${email}`);
+        if(response.data.length===0){
+            alert("User not found")
+        }
         setUser(response.data[0]);
     };
     getUserByEmail()
@@ -53,6 +56,7 @@ export function Checkout() {
 
     const handleFinal = async () => {
         let qtd = 0
+        let finalPrice = 0
         cart.map(async (item) => {
             console.log(item);
 
@@ -60,13 +64,15 @@ export function Checkout() {
                 if (product.id == item.id) {
                     qtd = product.quantity - item.quantity
                     product.quantity = qtd
+                    finalPrice += product.price * item.quantity
                     const response = await api.patch(`/products/${item.id}`, { quantity: qtd })
                 }
             })
         })
         await api.post('/orders', {
             userId: user.id,
-            products: cart
+            products: cart,
+            total: finalPrice
         })
         history.push(`/final/${user.id}`)
     }
