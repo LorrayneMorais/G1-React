@@ -33,7 +33,7 @@ function App() {
           <Route exact path='/home' component={Products} />
           <Route exact path='/product/:id' component={ProductPage} />
           <Route exact path='/checkout' component={Checkout} />
-          <Route exact path='/final/:id' component={Final} />
+          <Route exact path='/final' component={Final} />
         </Switch>
       </BrowserRouter>
     </div>
