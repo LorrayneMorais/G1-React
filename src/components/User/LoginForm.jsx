@@ -3,6 +3,8 @@ import { SignUpContext } from "../../contexts/SignUpContext/SignUpContext"
 import api from "../../api/api"
 import bcrypt from 'bcryptjs'
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
+import "./LoginForm.css"
+import Logo from "../../assets/images/Logo.png"
 
 export const LoginForm = () => {
     const { email, password, setEmail, setPassword } = useContext(SignUpContext)
@@ -29,14 +31,35 @@ export const LoginForm = () => {
         }
     }
     return (
-        <form onSubmit={handleLoginSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2vh' }}>
-            <label htmlFor="email">Email:
-                <input required type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            </label>
-            <label htmlFor="password">Password:
-                <input required type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            </label>
-            <button type="submit">Login</button>
-        </form>
-    )
-}
+        <div className="login-container">
+            <div className="login-box">
+                <div className="form-section">
+                    <h2>FAÇA SEU LOGIN.</h2>
+                    <form onSubmit={handleLoginSubmit}>
+                        <label htmlFor="email">Email</label>
+                        <input
+                            required
+                            type="email"
+                            id="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <label htmlFor="password">Senha</label>
+                        <input
+                            required
+                            type="password"
+                            id="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <button type="submit">Entrar</button>
+                        <p className="create-account">Criar conta</p>
+                    </form>
+                </div>
+                <div className="logo-section">
+                    <img src={Logo} alt="Hora da Leitura Logo" />
+                </div>
+            </div>
+        </div>
+    );
+};
