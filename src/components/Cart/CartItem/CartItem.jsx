@@ -28,7 +28,13 @@ export function CartItem({data}) {
                 }
                 return product;
             }));
+            if(Number(e.target.value) === 0) {
+                handleRemoveItem();
+            }
     };
+
+
+
 
     return(
         <>
@@ -40,9 +46,8 @@ export function CartItem({data}) {
             <div className="cart-item-content">
                 <h3 className="cart-item-title">{name}</h3>
                 <h3 className="cart-item-price">{price}</h3>
-                <input type="number" value={qtd} onChange={handleUpdateQuantity} className="card__quantity"></input>
-
-                <button type="button" className="button__remove-item" onClick={handleRemoveItem}>
+                <input type="number" min="0" value={qtd} onChange={handleUpdateQuantity} className="card__quantity"></input>
+                <button type="button" className="button__remove-item" onClick={handleRemoveItem} >
                     X
                 </button>
             </div>

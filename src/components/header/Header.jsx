@@ -1,19 +1,16 @@
 import React from 'react';
+import { CartButton } from '../Cart/CartButton/CartButton';
 import './Header.css';
+import { SearchBar } from '../SearchBar/SearchBar';
 
 const Header = () => {
     return (
         <header className="header">
-            <div className="logo">
-                <p>Logo</p>
-            </div>
-            <nav className="nav-links">
-                <a href="#home">Início</a>
-                <a href="#produtos">Produtos</a>
-                <a href="#sobre">Sobre-nós</a>
-            </nav>
-            <div className="cart-icon">
-                <i className="fas fa-shopping-cart"></i>
+            <div className="container">
+                <div className="logo">
+                    <p><SearchBar /></p>
+                </div>
+                <CartButton />
             </div>
         </header>
     );

@@ -4,11 +4,12 @@ import { ProductCard } from '../../components/product/ProductCard';
 import api from '../../api/api';
 import { ProductContext } from '../../contexts/CartContext/ProductContext';
 import { Loading } from '../../components/Loading/Loading';
+import  Header from '../../components/header/Header'
+import  Footer  from '../../components/footer/Footer';
 import { Cart } from '../Cart/Cart';
 
 export function Products() {
-const { products, setProducts } = useContext(ProductContext);
-const [loading, setLoading] = useState(true);
+const { products, setProducts, loading, setLoading } = useContext(ProductContext);
 
 useEffect(() => {
     const getAllProducts = async () => {
@@ -36,14 +37,16 @@ useEffect(() => {
 return (
     (loading) ? <Loading /> :
     <div>
+    <Header/>
     <Cart />
     <section className="products container">
         {products.map((product) => (
             <ProductCard key={product.id}
-            data={{id:product.id, imgUrl: product.imgUrl, name: product.name, price: product.price }}
+            data={{id:Number(product.id), imgUrl: product.imgUrl, name: product.name, price:product.price}}
             />
         ))}
     </section>
+    <Footer/>
     </div>
     );
 }
