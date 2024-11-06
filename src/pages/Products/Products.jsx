@@ -31,8 +31,17 @@ useEffect(() => {
         }
     };
 
+
+    return (
+        <section className="products container">
+            {products.map((product) => <ProductCard data={{ id: product.id, imgUrl: product.imgUrl, name: product.name, price: product.price }} key={product.id} />)}
+        </section>
+    )
+}
+
     getAllProducts();
 }, [setProducts]);
+
 
 return (
     (loading) ? <Loading /> :
