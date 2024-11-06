@@ -20,6 +20,7 @@ export function SearchBar() {
     return (
 
     <form>
+        {name}
         <input
         onSubmit={handleSearch}
         value={searchValue}
