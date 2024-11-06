@@ -7,7 +7,7 @@ import "./LoginForm.css"
 import Logo from "../../assets/images/Logo.png"
 
 export const LoginForm = () => {
-    const { email, password, setEmail, setPassword } = useContext(SignUpContext)
+    const { email, password, setEmail, setPassword, setLogged } = useContext(SignUpContext)
     const history = useHistory()
 
 
@@ -25,6 +25,7 @@ export const LoginForm = () => {
 
         if (validPassword) {
             localStorage.setItem('userId', user.id)
+            setLogged(true)
             history.push('/home')
         } else {
             alert('Email or password invalid!')
