@@ -1,12 +1,17 @@
+
 import React, { useContext } from 'react';
 import './ProductCard.css';
 import { MdAddShoppingCart } from "react-icons/md";
 import { ProductContext } from '../../contexts/CartContext/ProductContext';
-import PropTypes, { object } from 'prop-types';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { formatPrice } from '../../utils/PriceFormatter';
 
 export function ProductCard({ data }) {
     const { imgUrl, name, price, id } = data;
     const { cart, setCart } = useContext(ProductContext);
+
+
 
     const handleAddToCart = () => {
         // Evitar adicionar o mesmo produto várias vezes no carrinho
@@ -24,21 +29,25 @@ export function ProductCard({ data }) {
         }
     }
 
+
     return (
         <section className="products-card" key={id}>
-            <img src={imgUrl} alt={name} className="card__image" />
+            <Link to={`/product/${id}`}>
+                <img src={imgUrl} alt={name} className="card__image" />
+            </Link>
             <div className="card-infos">
-                <h2 className="card__price">{price}</h2>
+                <h2 className="card__price">{formatPrice(price)}</h2>
                 <h2 className="card__title">{name}</h2>
             </div>
             <button type="button" className="card__button">
                 <MdAddShoppingCart onClick={handleAddToCart} />
             </button>
         </section>
-    )
+    );
 }
 
 ProductCard.propTypes = {
+
     data: PropTypes.shape({
         id: PropTypes.number.isRequired,
         imgUrl: PropTypes.string.isRequired,
@@ -46,3 +55,4 @@ ProductCard.propTypes = {
         price: PropTypes.number.isRequired,
     }).isRequired,
 };
+

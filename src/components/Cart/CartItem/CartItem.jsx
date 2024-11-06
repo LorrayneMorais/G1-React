@@ -3,6 +3,7 @@ import "./CartItem.css";
 
 import PropTypes from "prop-types";
 import { ProductContext } from "../../../contexts/CartContext/ProductContext";
+import { formatPrice } from "../../../utils/PriceFormatter";
 
 export function CartItem({data}) {
 
@@ -45,7 +46,7 @@ export function CartItem({data}) {
             className="cart-item-image"/>
             <div className="cart-item-content">
                 <h3 className="cart-item-title">{name}</h3>
-                <h3 className="cart-item-price">{price}</h3>
+                <h3 className="cart-item-price">{formatPrice(price)}</h3>
                 <input type="number" min="0" value={qtd} onChange={handleUpdateQuantity} className="card__quantity"></input>
                 <button type="button" className="button__remove-item" onClick={handleRemoveItem} >
                     X

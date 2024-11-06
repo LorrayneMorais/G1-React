@@ -1,0 +1,17 @@
+.serch{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 20px;
+}
+
+
+.search__input:focus{
+    border: 1px solid #272e40;
+}
+
+.search__button{
+    color: #fff;
+    background-color: transparent;
+}

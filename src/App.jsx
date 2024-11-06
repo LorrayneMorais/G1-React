@@ -6,8 +6,12 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom/cjs/rea
 import { SignUpContext } from './contexts/SignUpContext/SignUpContext';
 import { useContext } from 'react';
 import { NotLogged } from './pages/notLogged/notLogged';
+
+import ProductPage from './pages/ProdutPage/ProductPage';
+
 import { Checkout } from './pages/Checkout/checkout';
 import { Final } from './pages/FinalPage/Final';
+
 
 
 const PrivateRoute = ({ path, component }) => {
@@ -19,18 +23,21 @@ const PrivateRoute = ({ path, component }) => {
 
 function App() {
   return (
+
     <div>
       <BrowserRouter>
         <Switch>
+          <Route exact path='/' component={Login} />
           <Route exact path='/signup' component={Signup} />
-          <Route exact path='/login' component={Login} />
           <Route exact path='/notLogged' component={NotLogged} />
           <Route exact path='/home' component={Products} />
+          <Route exact path='/product/:id' component={ProductPage} />
           <Route exact path='/checkout' component={Checkout} />
           <Route exact path='/final/:id' component={Final} />
         </Switch>
       </BrowserRouter>
     </div>
+
   );
 }
 

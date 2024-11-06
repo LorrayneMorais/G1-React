@@ -34,19 +34,21 @@ useEffect(() => {
     getAllProducts();
 }, [setProducts]);
 
+
 return (
     (loading) ? <Loading /> :
     <div>
-    <Header/>
+    <Header />
     <Cart />
     <section className="products container">
         {products.map((product) => (
             <ProductCard key={product.id}
-            data={{id:Number(product.id), imgUrl: product.imgUrl, name: product.name, price:product.price}}
+            data={{id:Number(product.id), imgUrl: product.imgUrl, name: product.name, price: product.price }}
             />
         ))}
     </section>
-    <Footer/>
+    <Footer />
     </div>
     );
 }
+
