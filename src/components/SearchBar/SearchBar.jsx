@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './SearchBar.css';
 import { IoSearchOutline } from "react-icons/io5";
 import { ProductContext } from '../../contexts/CartContext/ProductContext';
