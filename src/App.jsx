@@ -26,8 +26,8 @@ function App() {
     <div>
       <BrowserRouter>
         <Switch>
+          <Route exact path='/' component={Login} />
           <Route exact path='/signup' component={Signup} />
-          <Route exact path='/login' component={Login} />
           <Route exact path='/notLogged' component={NotLogged} />
           <Route exact path='/home' component={Products} />
           <Route exact path='/product/:id' component={ProductPage} />

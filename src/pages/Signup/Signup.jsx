@@ -8,7 +8,7 @@ export const Signup = () => {
         <>
             <RegisterForm />
             <br /> <hr />
-            <button onClick={() => { history.push('/login') }} >Go To Login</button>
+            <button onClick={() => { history.push('/') }} >Go To Login</button>
         </>
     )
 }
