@@ -13,7 +13,7 @@ export function Checkout() {
 
     const getUserByEmail = async () => {
         const response = await api.get(`/users?email=${email}`);
-        if(response.data.length===0){
+        if (response.data.length === 0) {
             alert("User not found")
         }
         setUser(response.data[0]);
@@ -78,7 +78,7 @@ export function Checkout() {
     }
 
     return (
-        <div className="check">
+        <>
             <section className="checkout-section">
                 <div className="cart-confirmation">
                     <h2>Confirmação dos itens</h2>
@@ -98,7 +98,6 @@ export function Checkout() {
                 </div>
                 <div className="card-form-title"><h2>Confirmação do pagamento:</h2></div>
                 <form className="card-form">
-
                     <div className="input-container">
                         <input
                             type="text"
@@ -130,7 +129,6 @@ export function Checkout() {
                         />
                     </div>
                     <select className="installments " name="installments" value={form.installments} onChange={handleInputChange}>
-
                         {[...Array(6)].map((_, i) => (
                             <option key={`installment-${i + 1}`} value={i + 1}>
                                 {i + 1}x de R$ {(totalPayment() / (i + 1)).toFixed(2)}
@@ -141,8 +139,7 @@ export function Checkout() {
                         Finalizar compra
                     </button>
                 </form>
-
             </section>
-        </div>
+        </>
     );
 }
