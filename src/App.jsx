@@ -10,6 +10,7 @@ import { NotLogged } from './pages/notLogged/notLogged';
 import ProductPage from './pages/ProdutPage/ProductPage';
 
 import { Checkout } from './pages/Checkout/checkout';
+import { Final } from './pages/FinalPage/Final';
 
 
 
@@ -32,6 +33,7 @@ function App() {
           <Route exact path='/home' component={Products} />
           <Route exact path='/product/:id' component={ProductPage} />
           <Route exact path='/checkout' component={Checkout} />
+          <Route exact path='/final/:id' component={Final} />
         </Switch>
       </BrowserRouter>
     </div>
