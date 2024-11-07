@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-body {
+.loginpage {
     font-family: Arial, sans-serif;
     margin: 0;
     justify-content: center;
@@ -70,7 +70,7 @@ input {
     width: 100%;
 }
 
-button {
+.botaoLogin {
     padding: 12px;
     border: none;
     border-radius: 8px;
@@ -82,11 +82,11 @@ button {
     transition: background-color 0.3s;
 }
 
-button:hover {
+.botaoLogin:hover {
     background-color: #666;
 }
 
-.create-account {
+.createc {
     font-size: 0.9rem;
     color: #aaa;
     text-align: center;
@@ -94,11 +94,11 @@ button:hover {
     cursor: pointer;
 }
 
-.create-account:hover {
+.createc:hover {
     color: #fff;
 }
 
-.logo-section {
+.logoimg {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -107,7 +107,7 @@ button:hover {
     flex: 1;
 }
 
-.logo-section img {
+.logoimg img {
     width: 180px;
     height: auto;
 }
