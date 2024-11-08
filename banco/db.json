@@ -1,0 +1,134 @@
+{
+  "users": [
+    {
+      "id": "831e",
+      "name": "Igor",
+      "email": "igor@email.com",
+      "password": "$2a$10$p9A023iN8oN5UXFv10oMeecAommAIta32z42Ad1c2e3796tq2kKu."
+    },
+    {
+      "id": "3668",
+      "name": "Andre",
+      "email": "andre@email.com",
+      "password": "$2a$10$EYouljM/1ik1Rat4LlPc6e..ywerNibQD8KWMx566WlCAf76PQFi2"
+    },
+    {
+      "id": "83e7",
+      "name": "João Pedro",
+      "email": "joao@email.com",
+      "password": "$2a$10$JUR8ga5/afVOYKpgzSLte.wclSarovw76vKcO1MZujpoROXpH2qny"
+    },
+    {
+      "id": "ce03",
+      "name": "Barda",
+      "email": "barda@email.com",
+      "password": "$2a$10$H0zATiRSUeMwNzibHXtBD.K0lcZOqLtW8ldJziA3d90f1A7szZcPm"
+    },
+    {
+      "id": "6094",
+      "name": "Sávio",
+      "email": "savio@email.com",
+      "password": "$2a$10$oiGsvwwKzPCrTVj8Z5u9ju7jhFYTjd/LxaAR7hnQmN/u/JajrP7xK"
+    },
+    {
+      "id": "caa3",
+      "name": "rafael rocha",
+      "email": "rafinha@emil.com",
+      "password": "$2a$10$JpT/bWrrZnuTEjkodCLwQu1PfCqMqA8kiHa1QgiwpxRzm5QO74GCe"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "imgUrl": "https://m.media-amazon.com/images/I/51PoQ61oq-L._SY445_SX342_.jpg",
+      "name": "Harry Potter e as Relíquias da Morte",
+      "description": "Harry Potter e as relíquias da morte', de J.K. Rowling, é o sétimo e último livro da série. Voldemorte está cada vez mais forte e Harry Potter precisa encontrar e aniquilar as Horcruxes para enfraquecer o lorde e poder enfrentálo. Nessa busca desenfreada, contando apenas com os amigos Rony e Hermione, Harry descobre as Relíquias da Morte, que serão úteis na batalha do bem contra o mal.",
+      "price": 61.9,
+      "category": "Aventura",
+      "quantity": 10,
+      "ratingAverage": 3
+    },
+    {
+      "id": "1",
+      "imgUrl": "https://m.media-amazon.com/images/I/51PoQ61oq-L._SY445_SX342_.jpg",
+      "name": "Harry Potter e as Relíquias da Morte",
+      "description": "Harry Potter e as relíquias da morte', de J.K. Rowling, é o sétimo e último livro da série. Voldemorte está cada vez mais forte e Harry Potter precisa encontrar e aniquilar as Horcruxes para enfraquecer o lorde e poder enfrentálo. Nessa busca desenfreada, contando apenas com os amigos Rony e Hermione, Harry descobre as Relíquias da Morte, que serão úteis na batalha do bem contra o mal.",
+      "price": 61.9,
+      "category": "Aventura",
+      "quantity": 10,
+      "ratingAverage": 3
+    },
+    {
+      "id": "1",
+      "imgUrl": "https://m.media-amazon.com/images/I/51PoQ61oq-L._SY445_SX342_.jpg",
+      "name": "Harry Potter e as Relíquias da Morte",
+      "description": "Harry Potter e as relíquias da morte', de J.K. Rowling, é o sétimo e último livro da série. Voldemorte está cada vez mais forte e Harry Potter precisa encontrar e aniquilar as Horcruxes para enfraquecer o lorde e poder enfrentálo. Nessa busca desenfreada, contando apenas com os amigos Rony e Hermione, Harry descobre as Relíquias da Morte, que serão úteis na batalha do bem contra o mal.",
+      "price": 61.9,
+      "category": "Aventura",
+      "quantity": 10,
+      "ratingAverage": 3
+    },
+    {
+      "id": "1",
+      "imgUrl": "https://m.media-amazon.com/images/I/51PoQ61oq-L._SY445_SX342_.jpg",
+      "name": "Harry Potter e as Relíquias da Morte",
+      "description": "Harry Potter e as relíquias da morte', de J.K. Rowling, é o sétimo e último livro da série. Voldemorte está cada vez mais forte e Harry Potter precisa encontrar e aniquilar as Horcruxes para enfraquecer o lorde e poder enfrentálo. Nessa busca desenfreada, contando apenas com os amigos Rony e Hermione, Harry descobre as Relíquias da Morte, que serão úteis na batalha do bem contra o mal.",
+      "price": 61.9,
+      "category": "Aventura",
+      "quantity": 10,
+      "ratingAverage": 3
+    },
+    {
+      "id": "1",
+      "imgUrl": "https://m.media-amazon.com/images/I/51PoQ61oq-L._SY445_SX342_.jpg",
+      "name": "Harry Potter e as Relíquias da Morte",
+      "description": "Harry Potter e as relíquias da morte', de J.K. Rowling, é o sétimo e último livro da série. Voldemorte está cada vez mais forte e Harry Potter precisa encontrar e aniquilar as Horcruxes para enfraquecer o lorde e poder enfrentálo. Nessa busca desenfreada, contando apenas com os amigos Rony e Hermione, Harry descobre as Relíquias da Morte, que serão úteis na batalha do bem contra o mal.",
+      "price": 61.9,
+      "category": "Aventura",
+      "quantity": 10,
+      "ratingAverage": 3
+    },
+    {
+      "id": "1",
+      "imgUrl": "https://m.media-amazon.com/images/I/51PoQ61oq-L._SY445_SX342_.jpg",
+      "name": "Harry Potter e as Relíquias da Morte",
+      "description": "Harry Potter e as relíquias da morte', de J.K. Rowling, é o sétimo e último livro da série. Voldemorte está cada vez mais forte e Harry Potter precisa encontrar e aniquilar as Horcruxes para enfraquecer o lorde e poder enfrentálo. Nessa busca desenfreada, contando apenas com os amigos Rony e Hermione, Harry descobre as Relíquias da Morte, que serão úteis na batalha do bem contra o mal.",
+      "price": 61.9,
+      "category": "Aventura",
+      "quantity": 10,
+      "ratingAverage": 3
+    },
+    {
+      "id": "1",
+      "imgUrl": "https://m.media-amazon.com/images/I/51PoQ61oq-L._SY445_SX342_.jpg",
+      "name": "Harry Potter e as Relíquias da Morte",
+      "description": "Harry Potter e as relíquias da morte', de J.K. Rowling, é o sétimo e último livro da série. Voldemorte está cada vez mais forte e Harry Potter precisa encontrar e aniquilar as Horcruxes para enfraquecer o lorde e poder enfrentálo. Nessa busca desenfreada, contando apenas com os amigos Rony e Hermione, Harry descobre as Relíquias da Morte, que serão úteis na batalha do bem contra o mal.",
+      "price": 61.9,
+      "category": "Aventura",
+      "quantity": 10,
+      "ratingAverage": 3
+    },
+    {
+      "id": "1",
+      "imgUrl": "https://m.media-amazon.com/images/I/51PoQ61oq-L._SY445_SX342_.jpg",
+      "name": "Harry Potter e as Relíquias da Morte",
+      "description": "Harry Potter e as relíquias da morte', de J.K. Rowling, é o sétimo e último livro da série. Voldemorte está cada vez mais forte e Harry Potter precisa encontrar e aniquilar as Horcruxes para enfraquecer o lorde e poder enfrentálo. Nessa busca desenfreada, contando apenas com os amigos Rony e Hermione, Harry descobre as Relíquias da Morte, que serão úteis na batalha do bem contra o mal.",
+      "price": 61.9,
+      "category": "Aventura",
+      "quantity": 10,
+      "ratingAverage": 3
+    },
+    {
+      "id": "2",
+      "imgUrl": "https://rocco.com.br/app/uploads/2023/09/9786555323238-scaled.jpg",
+      "name": "teste",
+      "description": "Harry Potter e as relíquias da morte', de J.K. Rowling, é o sétimo e último livro da série. Voldemorte está cada vez mais forte e Harry Potter precisa encontrar e aniquilar as Horcruxes para enfraquecer o lorde e poder enfrentálo. Nessa busca desenfreada, contando apenas com os amigos Rony e Hermione, Harry descobre as Relíquias da Morte, que serão úteis na batalha do bem contra o mal.",
+      "price": 61.9,
+      "category": "Aventura",
+      "quantity": 10,
+      "ratingAverage": 3
+    }
+  ],
+  "orders": [],
+  "review": []
+}
