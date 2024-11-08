@@ -21,4 +21,13 @@
     gap: 20px;
 }
 
+.header-categoria{
+    font-size: 28px;
+}
+
+.header-categoria:active{
+    transform: rotate(90deg);
+    transition: transform 0.5s;
+}
+
 
