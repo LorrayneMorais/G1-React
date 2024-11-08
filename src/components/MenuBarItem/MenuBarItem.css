@@ -1,0 +1,35 @@
+.menu-item-search{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.menu-item-icon-search{
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+}
+
+.menu-item-search input{
+    margin-bottom: 0;
+}
+
+.menu-categories{
+    margin-left: 25px;
+    font-size: 15px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-between
+}
+
+.menu-categories input{
+    margin: 0;
+    position: fixed;
+    accent-color: var(--color1);
+}

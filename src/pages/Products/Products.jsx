@@ -7,6 +7,7 @@ import { Loading } from '../../components/Loading/Loading';
 import  Header from '../../components/header/Header'
 import  Footer  from '../../components/footer/Footer';
 import { Cart } from '../Cart/Cart';
+import { MenuBar } from '../MenuBar/MenuBar';
 
 export function Products() {
 const { products, setProducts, loading, setLoading } = useContext(ProductContext);
@@ -40,6 +41,7 @@ return (
     <div>
     <Header />
     <Cart />
+    <MenuBar />
     <section className="products container">
         {products.map((product) => (
             product.quantity > 0 && (

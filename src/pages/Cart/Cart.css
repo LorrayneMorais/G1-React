@@ -14,7 +14,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    z-index: 0;
+    z-index: 1;
     transform: translate(110%,0);
     transition: all 400ms ease;
     overflow-y: auto;

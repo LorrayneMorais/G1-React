@@ -13,6 +13,7 @@ body {
     align-items: center;
     background: linear-gradient(135deg, #282c2e, #4d5b68, #5d7881);
     color: #fff;
+    overflow: auto;
 }
 
 .container {

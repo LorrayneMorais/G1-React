@@ -14,6 +14,7 @@ const ProductProvider = ({ children }) => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
     const [isCartVisible, setIsCartVisible] = useState(false);
+    const [isMenuVisible, setIsMenuVisible] = useState(false);
 
     return (
         <ProductContext.Provider value={{
@@ -39,6 +40,8 @@ const ProductProvider = ({ children }) => {
             setIsCartVisible,
             loading,
             setLoading,
+            isMenuVisible,
+            setIsMenuVisible,
         }}>
             {children}
         </ProductContext.Provider>
