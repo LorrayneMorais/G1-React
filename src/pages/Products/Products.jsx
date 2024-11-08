@@ -42,9 +42,11 @@ return (
     <Cart />
     <section className="products container">
         {products.map((product) => (
-            <ProductCard key={product.id}
-            data={{id:Number(product.id), imgUrl: product.imgUrl, name: product.name, price: product.price }}
-            />
+            product.quantity > 0 && (
+                <ProductCard key={product.id}
+                data={{id:Number(product.id), imgUrl: product.imgUrl, name: product.name, price: product.price }}
+                />
+            )
         ))}
     </section>
     <Footer />

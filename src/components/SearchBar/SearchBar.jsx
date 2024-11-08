@@ -21,18 +21,20 @@ export function SearchBar() {
 
     return (
 
-    <form onSubmit={handleSearch}>
-        <input
-        value={searchValue}
-        type='search'
-        placeholder='Procure um livro'
-        className="search__input"
-        onChange={({target}) => setSearchValue(target.value) }
-        required
-        />
-        <button type='submit' className="search__button">
-            <IoSearchOutline />
-        </button>
+    <form onSubmit={handleSearch} >
+        <div className="form-div">
+            <input
+            value={searchValue}
+            type='search'
+            placeholder='Procure um livro'
+            className="search__input"
+            onChange={({target}) => setSearchValue(target.value) }
+            required
+            />
+            <button type='submit' className="search__button">
+                <IoSearchOutline />
+            </button>
+        </div>
     </form>
     );
 }

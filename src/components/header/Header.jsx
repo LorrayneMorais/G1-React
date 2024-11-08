@@ -5,12 +5,22 @@ import { SearchBar } from '../SearchBar/SearchBar';
 
 const Header = () => {
     return (
-        <header className="header">
-            <div className="container">
-                <div className="logo">
+        <header className="container-header">
+            <div className="header-search">
+                <div>
+                    navegação
+                </div>
+                <div>
                     <SearchBar />
                 </div>
-                <CartButton />
+            </div>
+            <div className="header-user">
+                <div >
+                    login
+                </div>
+                <div>
+                    <CartButton />
+                </div>
             </div>
         </header>
     );

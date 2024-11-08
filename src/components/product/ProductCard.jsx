@@ -39,8 +39,8 @@ export function ProductCard({ data }) {
                 <h2 className="card__price">{formatPrice(price)}</h2>
                 <h2 className="card__title">{name}</h2>
             </div>
-            <button type="button" className="card__button">
-                <MdAddShoppingCart onClick={handleAddToCart} />
+            <button type="button" className="card__button" onClick={handleAddToCart}>
+                <MdAddShoppingCart  />
             </button>
         </section>
     );

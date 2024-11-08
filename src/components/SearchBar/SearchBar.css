@@ -1,17 +1,40 @@
-.serch{
+@import url('../../styles/GlobalStyles.css');
+
+.form-div{
     display: flex;
-    justify-content: center;
+    gap: 8px;
     align-items: center;
-    height: 100vh;
-    gap: 20px;
+    justify-content: center;
 }
+
+.search__input{
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 0;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+}
+
 
 
 .search__input:focus{
     border: 1px solid #272e40;
+
 }
 
 .search__button{
-    color: #fff;
-    background-color: transparent;
+    margin-top: 0;
+    padding: 5px;
+    font-size: 1.5rem;
+    color: #fefefe;
+    background-color: var(--color2);
+    box-shadow: rgba(0, 0, 0, 0.35) 0 0 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.search__button:hover{
+    background-color: var(--color1);
 }
