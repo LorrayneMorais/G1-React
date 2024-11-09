@@ -1,6 +1,7 @@
 @import url("../../styles/GlobalStyles.css");
 
 .cart {
+    margin-top: 10px;
     width: 100%;
     max-width: 330px;
     background-color: var(--color4) ;
