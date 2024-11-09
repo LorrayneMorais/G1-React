@@ -6,7 +6,18 @@ import { FaSearch } from "react-icons/fa";
 import './MenuBarItem.css';
 
 
-export function MenuBarItem() {
+export function MenuBarItem({categories}) {
+
+    const renderCategories = () => {
+        return categories.map((category, index) => {
+            return (
+                <div className="menu-categories" key={index}>
+                    <label htmlFor={category}>{category}</label>
+                    <input type="checkbox" id={category}/>
+                </div>
+            )
+        })
+    }
 
 
     return (
@@ -20,11 +31,13 @@ export function MenuBarItem() {
                 </div>
                 <br />
                 <div>
-                    <div className="menu-categories">
+
+                    {renderCategories()}
+                    {/* <div className="menu-categories">
                         <label htmlFor="acao">Ação</label>
                         <input type="checkbox" id="acao"/>
-                    </div>
-                    <div className="menu-categories">
+                    </div> */}
+                    {/* <div className="menu-categories">
                         <label htmlFor="suspense">Suspense</label>
                         <input type="checkbox" id="suspense"/>
                     </div>
@@ -55,7 +68,7 @@ export function MenuBarItem() {
                     <div className="menu-categories">
                         <label htmlFor="japones">Japonês</label>
                         <input type="checkbox" id="japones"/>
-                    </div>
+                    </div> */}
                 </div>
             </section>
         </>
