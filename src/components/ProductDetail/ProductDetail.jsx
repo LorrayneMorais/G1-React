@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { getProductById } from '../../api/api';
 import './ProductDetail.css'
 import { formatPrice } from '../../utils/PriceFormatter';
 import Rating from '../Rating/Rating';
+import { ProductContext } from '../../contexts/CartContext/ProductContext'
 
 function ProductDetail({ productId }) {
+  const { products } = useContext(ProductContext)
   const [product, setProduct] = useState({});
 
   const getProduct = async (id) => {
@@ -12,7 +14,15 @@ function ProductDetail({ productId }) {
     setProduct(response);
   };
 
-  getProduct(productId)
+  useEffect(() => {
+    getProduct(productId);
+  }, []);
+
+  useEffect(() => {
+    getProduct(productId);
+  }, [products]);
+
+  const ratingFormated = Number(product.ratingAverage).toFixed(2)
 
   return (
     <div className="product-detail">
@@ -21,7 +31,7 @@ function ProductDetail({ productId }) {
       <p>{product.description}</p>
       {<p>Preço: {formatPrice(product.price)}</p>}
       <div>
-        <h3>Avaliação Média: {product.avaliacao || product.review || 'Nenhuma avaliação ainda'}</h3>
+        <h3>Avaliação Média: {ratingFormated || 'Nenhuma avaliação ainda'}</h3>
       </div>
       <Rating productId={product.id} />
     </div>

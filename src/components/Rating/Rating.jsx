@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { submitProductRating } from '../../api/api';
+import { SignUpContext } from '../../contexts/SignUpContext/SignUpContext'
+import { ProductContext } from '../../contexts/CartContext/ProductContext';
 
 function Rating({ productId }) {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const { userId } = useContext(SignUpContext);
+  const { products, setProducts } = useContext(ProductContext)
   const handleRatingSubmit = async () => {
+
     if (rating === 0) return alert('Por favor, selecione uma avaliação.');
 
     setIsSubmitting(true);
     try {
-      await submitProductRating(productId, rating, comment);
+      const response = await submitProductRating(userId, productId, rating, comment);
+      setProducts(products.map((product) => product.id === productId ? response.data : product));
       setSuccessMessage('Avaliação enviada com sucesso!');
       setRating(0);
       setComment('');
