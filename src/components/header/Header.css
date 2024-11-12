@@ -12,14 +12,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 50px;
+    gap: 20px;
 }
 
 .header-user{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 5px;
 }
 
 .header-categoria{
@@ -35,4 +35,17 @@
     transition: transform 0.5s;
 }
 
+
+.user-boneco{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    align-items: center;
+    padding-top: 12px;
+}
+
+.signin-buttom-link{
+    color: rgb(91, 148, 255);
+    font-weight: 400;
+}
 

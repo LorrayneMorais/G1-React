@@ -38,6 +38,12 @@ const calculateAverageRating = async () => {
     }
     return average
 }
+ 
+const getUserById =  async (id) => {
+    const response  = await api.get(`/users/${id}`)
+    return response.data
+}
+
 // const response = await api.patch(`/products/${productId}`, {
 //     rating,
 //     comment,
