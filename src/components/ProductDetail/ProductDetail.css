@@ -6,9 +6,8 @@
 }
 
 .product-image {
-  max-width: 100%;
-  height: auto;
-  margin: 20px 0;
+  width: 200px;
+  height: 280px;
 }
 
 .rating {
@@ -41,4 +40,39 @@
 .button-home-back:active{
   background-color: var(--color2);
   transition: all 0.2s;
+}
+
+
+.product-section-card {
+  display: flex;
+  justify-content: center;
+  gap: 0px;
+}
+
+.product-image-card {
+  width: 300px;
+  height: 300px;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: var(--color1);
+}
+
+.product-card-title{
+  font-size: 20px;
+  font-weight: bold;
+  background-color: var(--color4);
+  color: var(--color1);
+}
+
+.product-info-card{
+  display: flex;
+  flex-direction: column;
+  height: 275px;
+  padding-top: 30px;
+  gap: 30px;
+  justify-content: center;
+  background-color: var(--color4);
+
 }

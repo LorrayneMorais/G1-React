@@ -29,10 +29,22 @@ function ProductDetail({ productId }) {
       <div style={{width:'100%', justifyContent:'left'}}>
         <button className="button-home-back" onClick={() => window.history.back()}>Voltar</button>
       </div>
-      <h1>{product.name}</h1>
-      <img src={product.imgUrl} alt={product.name} className="product-image" />
-      <p>{product.description}</p>
-      {<p>Preço: {formatPrice(product.price)}</p>}
+
+      <section className="product-section-card">
+        <div  className="product-image-card">
+          <img src={product.imgUrl} alt={product.name} className="product-image" />
+        </div>
+        <div  className="product-description-card">
+          <h1 className="product-card-title">{product.name}</h1>
+          <div  className="product-info-card">
+            <p>{product.description}</p>
+            {<p>Preço: {formatPrice(product.price)}</p>}
+          </div>
+
+        </div>
+
+      </section>
+
       <div>
         <h3>Avaliação Média: {ratingFormated || 'Nenhuma avaliação ainda'}</h3>
       </div>
