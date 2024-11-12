@@ -7,13 +7,16 @@ import "./LoginForm.css"
 import Logo from "../../assets/images/Logo.png"
 
 export const LoginForm = () => {
-    const { email, password, setEmail, setPassword, setLogged } = useContext(SignUpContext)
+    const { email, password, setEmail, setPassword, setLogged, setUserId } = useContext(SignUpContext)
     const history = useHistory()
 
 
     const handleLoginSubmit = async (e) => {
         e.preventDefault()
-        const response = await api.get(`/users?email=${email}`)
+
+        const response = await api.get(`/users`, {
+            email
+        })
 
         if (response.data.length === 0) {
             alert('Email or password invalid!')
@@ -24,8 +27,8 @@ export const LoginForm = () => {
         const validPassword = await bcrypt.compare(password, user.password)
 
         if (validPassword) {
-            localStorage.setItem('userId', user.id)
             setLogged(true)
+            setUserId(user.id)
             history.push('/home')
         } else {
             alert('Email or password invalid!')
