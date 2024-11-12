@@ -36,7 +36,7 @@ export function Final() {
     return (
         <section>
             <div>
-                <button onClick={() => history.push('/home')}>Voltar</button>
+                <button onClick={() => history.push('/')}>Voltar</button>
             </div>
             <h1>Meus Pedidos</h1>
             {orders.map((order) => (

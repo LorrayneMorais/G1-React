@@ -6,7 +6,7 @@ export const NotLogged = () => {
         <div>
             <h1>Error 401: Unauthorized</h1>
             <button onClick={() => { history.push('/signup') }}>Go to SignUp</button>
-            <button onClick={() => { history.push('/') }}>Go to LogIn</button>
+            <button onClick={() => { history.push('/login') }}>Go to LogIn</button>
 
         </div>
     )

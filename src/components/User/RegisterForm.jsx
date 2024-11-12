@@ -35,7 +35,7 @@ export const RegisterForm = () => {
             <div className="register-container">
                 <header>
                     <img src={Logo} alt="Logo" className="logo" />
-                    <Link to="/" className="back-button">Entrar</Link>
+                    <Link to="/login" className="back-button">Entrar</Link>
                 </header>
                 <form onSubmit={handleRegisterSubmit} className="register-form">
                     <h2>Cadastro</h2>
@@ -49,7 +49,7 @@ export const RegisterForm = () => {
                         <input required type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                     </label>
                     <button type="submit" className="botaoCadastro">Cadastre-se</button>
-                    <Link to="/" className="login-link">Entrar</Link>
+                    <Link to="/login" className="login-link">Entrar</Link>
                 </form>
             </div>
         </div>

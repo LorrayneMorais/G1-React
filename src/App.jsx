@@ -27,13 +27,13 @@ function App() {
     <div>
       <BrowserRouter>
         <Switch>
-          <Route exact path='/' component={Login} />
+          <Route exact path='/' component={Products} />
+          <Route exact path='/login' component={Login} />
           <Route exact path='/signup' component={Signup} />
           <Route exact path='/notLogged' component={NotLogged} />
-          <Route exact path='/home' component={Products} />
           <Route exact path='/product/:id' component={ProductPage} />
-          <Route exact path='/checkout' component={Checkout} />
-          <Route exact path='/final/:id' component={Final} />
+          <PrivateRoute exact path='/checkout' component={Checkout} />
+          <PrivateRoute exact path='/final/:id' component={Final} />
         </Switch>
       </BrowserRouter>
     </div>

@@ -41,7 +41,7 @@ const Header = () => {
             <div className="header-user">
                 <div className="user-boneco">
                     <FaRegUser style={{ fontSize: '26px' }} />
-                    {logged ? <span>{userName}</span> : <Link className="signin-buttom-link" to='/'>SignIn</Link>
+                    {logged ? <span>{userName}</span> : <Link className="signin-buttom-link" to='/login'>SignIn</Link>
                     }
                 </div>
                 {logged &&

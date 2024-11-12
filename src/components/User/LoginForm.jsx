@@ -25,7 +25,7 @@ export const LoginForm = () => {
         if (validPassword) {
             setLogged(true)
             setUserId(user.id)
-            history.push('/home')
+            history.push('/')
         } else {
             alert('Email or password invalid!')
         }
