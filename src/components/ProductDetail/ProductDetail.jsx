@@ -26,6 +26,9 @@ function ProductDetail({ productId }) {
 
   return (
     <div className="product-detail">
+      <div style={{width:'100%', justifyContent:'left'}}>
+        <button className="button-home-back" onClick={() => window.history.back()}>Voltar</button>
+      </div>
       <h1>{product.name}</h1>
       <img src={product.imgUrl} alt={product.name} className="product-image" />
       <p>{product.description}</p>

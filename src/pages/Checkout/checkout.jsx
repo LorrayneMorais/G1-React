@@ -6,7 +6,7 @@ import { ProductContext } from "../../contexts/CartContext/ProductContext";
 import { SignUpContext } from "../../contexts/SignUpContext/SignUpContext";
 
 export function Checkout() {
-    const { cart, products } = useContext(ProductContext);
+    const { cart, setCart, products } = useContext(ProductContext);
     const { email } = useContext(SignUpContext)
     const [user, setUser] = useState({});
     const history = useHistory();
@@ -58,8 +58,6 @@ export function Checkout() {
         let qtd = 0
         let finalPrice = 0
         cart.map(async (item) => {
-            console.log(item);
-
             products.map(async (product) => {
                 if (product.id == item.id) {
                     qtd = product.quantity - item.quantity
@@ -75,6 +73,7 @@ export function Checkout() {
             total: finalPrice
         })
         history.push(`/final/${user.id}`)
+        setCart([])
     }
 
     return (

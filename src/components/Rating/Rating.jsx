@@ -8,12 +8,12 @@ function Rating({ productId }) {
   const [comment, setComment] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { userId } = useContext(SignUpContext);
+  const { userId, logged } = useContext(SignUpContext);
   const { products, setProducts } = useContext(ProductContext)
-  const handleRatingSubmit = async () => {
 
+  const handleRatingSubmit = async () =>{
+    if (!logged) return alert('Você precisa estar logado para avaliar um produto.');
     if (rating === 0) return alert('Por favor, selecione uma avaliação.');
-
     setIsSubmitting(true);
     try {
       const response = await submitProductRating(userId, productId, rating, comment);
