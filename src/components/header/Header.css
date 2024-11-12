@@ -17,9 +17,10 @@
 
 .header-user{
     display: flex;
+    width: 100%;
+    justify-content: flex-end;
     align-items: center;
-    justify-content: center;
-    gap: 5px;
+    gap: 25px;
     margin-left: 15px;
 }
 
@@ -40,7 +41,7 @@
 .user-boneco{
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4px;
     align-items: center;
     padding-top: 12px;
     position: relative;
@@ -51,3 +52,18 @@
     font-weight: 400;
 }
 
+
+.user-pedidos{
+    text-decoration: none;
+    color: #fefefe;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    padding-top: 12px;
+}
+
+.user-pedidos:active{
+    color: var(--color5);
+    transform: perspective(1px) scale(0.95);
+}

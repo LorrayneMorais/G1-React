@@ -8,17 +8,18 @@ import { SearchBar } from '../SearchBar/SearchBar'
 import { FaRegUser } from "react-icons/fa";
 import { SignUpContext } from '../../contexts/SignUpContext/SignUpContext';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
+import { RiFileList3Line } from "react-icons/ri";
 
 
 const Header = () => {
     const { isMenuVisible, setIsMenuVisible } = useContext(ProductContext);
     const { userId, logged } = useContext(SignUpContext);
     const [userName, setUserName] = React.useState('')
-    
+
     const handleUser = async () => {
         const { name } = await getUserById(userId)
         console.log(userId);
-        
+
         setUserName(name)
     }
 
@@ -26,7 +27,7 @@ const Header = () => {
         handleUser()
     }, [])
 
-    
+
     return (
         <header className="container-header">
             <div className="header-search">
@@ -39,14 +40,22 @@ const Header = () => {
             </div>
             <div className="header-user">
                 <div className="user-boneco">
-                    <FaRegUser style={{fontSize:'26px'}}/>
-                    {logged? <span>{userName}</span> : <Link className="signin-buttom-link" to='/'>SignIn</Link>
+                    <FaRegUser style={{ fontSize: '26px' }} />
+                    {logged ? <span>{userName}</span> : <Link className="signin-buttom-link" to='/'>SignIn</Link>
                     }
                 </div>
+                {logged &&
+                <Link className="user-pedidos" to={`/final/${userId}`}>
+                    <RiFileList3Line  style={{ fontSize: '26px' }}/>
+                    <span className="buttom-link-pedidos">
+                        Meus pedidos
+                    </span>
+                </Link>
+                }
+            </div>
                 <div>
                     <CartButton />
                 </div>
-            </div>
         </header>
     );
 };
