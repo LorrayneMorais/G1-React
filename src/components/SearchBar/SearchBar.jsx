@@ -1,40 +1,47 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './SearchBar.css';
 import { IoSearchOutline } from "react-icons/io5";
 import { ProductContext } from '../../contexts/CartContext/ProductContext';
-import api from '../../api/api';
 export function SearchBar() {
     const [searchValue, setSearchValue] = useState('');
-    const { setProducts } = useContext(ProductContext);
-
-    const handleSearch = async (event) => {
-        event.preventDefault();
+    const { products, setFilteredProducts } = useContext(ProductContext);
+    const handleFilterProducts = () => {
         try {
-            const response = await api.get(`/products?name=${searchValue}`);
-            setProducts(response.data);
-            setSearchValue(''); // Atualiza o estado com os dados da resposta
+            const response = products.filter((product) => product.name.toLowerCase().includes(searchValue.trim().toLowerCase()));
+            console.log(response);
+
+            setFilteredProducts(response);
         } catch (error) {
             console.error("Erro ao buscar produto:", error);
         }
-    };
+        const tempValue = searchValue.trim();
+        if (tempValue === '') {
+            setFilteredProducts([]);
+        }
+    }
+
+    useEffect(() => {
+        handleFilterProducts()
+    }, [searchValue]);
+
 
 
     return (
 
-    <form onSubmit={handleSearch} >
-        <div className="form-div">
-            <input
-            value={searchValue}
-            type='search'
-            placeholder='Procure um livro'
-            className="search__input"
-            onChange={({target}) => setSearchValue(target.value) }
-            required
-            />
-            <button type='submit' className="search__button">
-                <IoSearchOutline />
-            </button>
-        </div>
-    </form>
+        <form onSubmit={handleFilterProducts} >
+            <div className="form-div">
+                <input
+                    value={searchValue}
+                    type='search'
+                    placeholder='Procure um livro'
+                    className="search__input"
+                    onChange={(e) => setSearchValue(e.target.value)}
+                    required
+                />
+                <button type='submit' className="search__button">
+                    <IoSearchOutline />
+                </button>
+            </div>
+        </form>
     );
 }

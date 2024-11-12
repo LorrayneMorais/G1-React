@@ -7,7 +7,7 @@ const ProductProvider = ({ children }) => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState(0);
-    const[category, setCategory] = useState('');
+    const [category, setCategory] = useState('');
     const [quantity, setQuantity] = useState(0);
     const [review, setReview] = useState('');
     const [loading, setLoading] = useState(true);
@@ -15,6 +15,7 @@ const ProductProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
     const [isCartVisible, setIsCartVisible] = useState(false);
     const [isMenuVisible, setIsMenuVisible] = useState(false);
+    const [filteredProducts, setFilteredProducts] = useState([]);
 
     return (
         <ProductContext.Provider value={{
@@ -42,6 +43,8 @@ const ProductProvider = ({ children }) => {
             setLoading,
             isMenuVisible,
             setIsMenuVisible,
+            filteredProducts,
+            setFilteredProducts
         }}>
             {children}
         </ProductContext.Provider>

@@ -1,25 +1,22 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './Products.css';
 import { ProductCard } from '../../components/product/ProductCard';
-import api from '../../api/api';
+import { getAllProducts } from '../../api/api';
 import { ProductContext } from '../../contexts/CartContext/ProductContext';
 import { Loading } from '../../components/Loading/Loading';
-import  Header from '../../components/header/Header'
-import  Footer  from '../../components/footer/Footer';
+import Header from '../../components/header/Header'
+import Footer from '../../components/footer/Footer';
 import { Cart } from '../Cart/Cart';
 import { MenuBar } from '../MenuBar/MenuBar';
 // import { BsHandIndexThumb } from 'react-icons/bs';
 
 export function Products() {
-const { products, setProducts, loading, setLoading } = useContext(ProductContext);
+    const { products, setProducts, loading, setLoading, filteredProducts } = useContext(ProductContext);
 
-useEffect(() => {
-    const getAllProducts = async () => {
-        const response = await api.get('/products');
-        if (response.status === 200) {
-            const fetchedProducts = response.data;
-
-            // Evitar duplicação de produtos no estado
+    const handleProductsRequest = async () => {
+        const response = await getAllProducts();
+        if (response) {
+            const fetchedProducts = response;
             setProducts((prevProducts) => {
                 const newProducts = fetchedProducts.filter(
                     (product) => !prevProducts.some((p) => p.id === product.id)
@@ -31,29 +28,43 @@ useEffect(() => {
         } else {
             console.log('Error');
         }
-    };
+    }
 
-    getAllProducts();
-}, [setProducts]);
+    useEffect(() => {
+        handleProductsRequest()
+    }, []);
 
 
-return (
-    (loading) ? <Loading /> :
-    <div>
-    <Header />
-    <Cart />
-    <MenuBar />
-    <section className="products container">
-        {products.map((product) => (
-            product.quantity > 0 && (
-                <ProductCard key={product.id}
-                data={{id:Number(product.id), imgUrl: product.imgUrl, name: product.name, price: product.price }}
-                />
-            )
-        ))}
-    </section>
-    <Footer />
-    </div>
+    return (
+        (loading) ? <Loading /> :
+            <div>
+                <Header />
+                <Cart />
+                <MenuBar />
+                {filteredProducts.length > 0 ? (
+                    <section className="products container">
+                        {filteredProducts.map((product) => (
+                            product.quantity > 0 && (
+                                <ProductCard key={product.id}
+                                    data={{ id: Number(product.id), imgUrl: product.imgUrl, name: product.name, price: product.price }}
+                                />
+                            )
+                        ))}
+                    </section>
+                ) : (
+                    <section className="products container">
+                        {products.map((product) => (
+                            product.quantity > 0 && (
+                                <ProductCard key={product.id}
+                                    data={{ id: Number(product.id), imgUrl: product.imgUrl, name: product.name, price: product.price }}
+                                />
+                            )
+                        ))}
+                    </section>
+                )
+                }
+                <Footer />
+            </div >
     );
 }
 
