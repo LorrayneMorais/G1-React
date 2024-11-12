@@ -14,15 +14,11 @@ export const LoginForm = () => {
     const handleLoginSubmit = async (e) => {
         e.preventDefault()
 
-        const response = await api.get(`/users`, {
-            email
-        })
-
+        const response = await api.get(`/users?email=${email}`)
         if (response.data.length === 0) {
             alert('Email or password invalid!')
             return
         }
-
         const user = response.data[0]
         const validPassword = await bcrypt.compare(password, user.password)
 

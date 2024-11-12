@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { getUserById } from '../../api/api';
 import { CartButton } from '../Cart/CartButton/CartButton';
 import './Header.css';
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -11,8 +12,19 @@ import { Link } from 'react-router-dom/cjs/react-router-dom';
 
 const Header = () => {
     const { isMenuVisible, setIsMenuVisible } = useContext(ProductContext);
-    const { name, userId, logged } = useContext(SignUpContext);
+    const { userId, logged } = useContext(SignUpContext);
+    const [userName, setUserName] = React.useState('')
     
+    const handleUser = async () => {
+        const { name } = await getUserById(userId)
+        console.log(userId);
+        
+        setUserName(name)
+    }
+
+    useEffect(() => {
+        handleUser()
+    }, [])
 
     
     return (
@@ -28,7 +40,7 @@ const Header = () => {
             <div className="header-user">
                 <div className="user-boneco">
                     <FaRegUser style={{fontSize:'26px'}}/>
-                    {logged? <span>{name}</span> : <Link className="signin-buttom-link" to='/'>SignIn</Link>
+                    {logged? <span>{userName}</span> : <Link className="signin-buttom-link" to='/'>SignIn</Link>
                     }
                 </div>
                 <div>

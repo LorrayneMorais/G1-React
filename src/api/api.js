@@ -39,7 +39,7 @@ const calculateAverageRating = async () => {
     return average
 }
  
-const getUserById =  async (id) => {
+export const getUserById =  async (id) => {
     const response  = await api.get(`/users/${id}`)
     return response.data
 }
