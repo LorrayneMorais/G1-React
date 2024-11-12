@@ -8,8 +8,10 @@ import { useHistory } from "react-router-dom";
 import { TbWashDrycleanOff } from "react-icons/tb";
 
 
+
 export function Cart() {
     const {cart, setCart, isCartVisible} = useContext(ProductContext);
+
     const history = useHistory();
 
     const handleClearCart = () => {
@@ -19,6 +21,7 @@ export function Cart() {
     const totalPrice = cart.reduce((acc, product) => {
         return acc + Number(product.quantity) * parseFloat(product.price);
     }, 0);
+
 
     return (
         <>

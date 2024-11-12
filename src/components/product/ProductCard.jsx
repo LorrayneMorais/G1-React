@@ -6,16 +6,20 @@ import { ProductContext } from '../../contexts/CartContext/ProductContext';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { formatPrice } from '../../utils/PriceFormatter';
+import { SignUpContext } from '../../contexts/SignUpContext/SignUpContext';
 
 export function ProductCard({ data }) {
     const { imgUrl, name, price, id } = data;
     const { cart, setCart } = useContext(ProductContext);
+    const { logged } = useContext(SignUpContext);
 
 
 
     const handleAddToCart = () => {
-        // Evitar adicionar o mesmo produto várias vezes no carrinho
-        console.log(cart[0]);
+        if (!logged) {
+            alert('Você precisa estar logado para adicionar produtos ao carrinho');
+            return;
+        }
         const productExists = cart.some((product) => product.id === id);
         if (!productExists) {
             setCart([...cart, { ...data, quantity: 1 }]);
