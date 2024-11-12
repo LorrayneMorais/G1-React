@@ -8,8 +8,6 @@ export function SearchBar() {
     const handleFilterProducts = () => {
         try {
             const response = products.filter((product) => product.name.toLowerCase().includes(searchValue.trim().toLowerCase()));
-            console.log(response);
-
             setFilteredProducts(response);
         } catch (error) {
             console.error("Erro ao buscar produto:", error);
