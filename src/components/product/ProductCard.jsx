@@ -9,7 +9,7 @@ import { formatPrice } from '../../utils/PriceFormatter';
 import { SignUpContext } from '../../contexts/SignUpContext/SignUpContext';
 
 export function ProductCard({ data }) {
-    const { imgUrl, name, price, id } = data;
+    const { imgUrl, name, price, id, stockQuantity } = data;
     const { cart, setCart } = useContext(ProductContext);
     const { logged } = useContext(SignUpContext);
 
@@ -23,10 +23,11 @@ export function ProductCard({ data }) {
         const productExists = cart.some((product) => product.id === id);
         if (!productExists) {
             setCart([...cart, { ...data, quantity: 1 }]);
-        }else{
+        } else {
             setCart(cart.map((product) => {
-                if(product.id === id) {
-                    return {...product, quantity: product.quantity + 1}
+                if (product.id === id) {
+                    if (product.quantity + 1 > stockQuantity) return product
+                    return { ...product, quantity: product.quantity + 1 }
                 }
                 return product;
             }));
@@ -36,7 +37,7 @@ export function ProductCard({ data }) {
 
     return (
         <section className="products-card" key={id}>
-            <Link className ="link-image" to={`/product/${id}`}>
+            <Link className="link-image" to={`/product/${id}`}>
                 <img src={imgUrl} alt={name} className="card__image" />
             </Link>
             <div className="card-infos">
@@ -44,7 +45,7 @@ export function ProductCard({ data }) {
                 <h2 className="card__title">{name}</h2>
             </div>
             <button type="button" className="card__button" onClick={handleAddToCart}>
-                <MdAddShoppingCart  />
+                <MdAddShoppingCart />
             </button>
         </section>
     );
@@ -57,6 +58,7 @@ ProductCard.propTypes = {
         imgUrl: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
+        stockQuantity: PropTypes.number.isRequired
     }).isRequired,
 };
 

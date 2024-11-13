@@ -56,7 +56,7 @@ export function Products() {
                         {products.map((product) => (
                             product.quantity > 0 && (
                                 <ProductCard key={product.id}
-                                    data={{ id: Number(product.id), imgUrl: product.imgUrl, name: product.name, price: product.price }}
+                                    data={{ id: Number(product.id), imgUrl: product.imgUrl, name: product.name, price: product.price, stockQuantity: product.quantity }}
                                 />
                             )
                         ))}
