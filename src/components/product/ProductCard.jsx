@@ -36,7 +36,7 @@ export function ProductCard({ data }) {
 
     return (
         <section className="products-card" key={id}>
-            <Link to={`/product/${id}`}>
+            <Link className ="link-image" to={`/product/${id}`}>
                 <img src={imgUrl} alt={name} className="card__image" />
             </Link>
             <div className="card-infos">
