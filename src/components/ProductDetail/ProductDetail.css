@@ -6,19 +6,63 @@
 }
 
 .product-image {
-  width: 200px;
-  height: 280px;
+  width: 12.5rem;
+  height: 17.5rem;
 }
 
 .rating {
   margin-top: 20px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 13.75rem;
+  height: 15.88rem;
 }
 
-.stars span {
+.submit-average{
+  background-color: var(--color4);
+  color: var(--color1);
+  border: none;
+  width: 50%;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.submit-average:hover{
+  background-color: var(--color1);
+  color: var(--color4);
+  cursor: pointer;
+  transition: all 0.2s;
+  transform: scale(1.1);
+}
+
+.submit-average:active{
+  transform: scale(0.99);
+}
+
+.comment-area{
+  text-decoration: none;
+  text-align: center;
+  background-color: var(--color2);
+  width: 10%;
+  padding: 2px;
+  color: #e6e3e3;
+  border: none;
+}
+
+
+.stars {
   font-size: 24px;
   cursor: pointer;
-  color: #ddd;
+  background-color: var(--color1);
+  width: 70%;
+  border-radius: 10px;
+  padding: 5px;
+  text-align: center;
 }
 
 .stars .selected {
@@ -46,33 +90,61 @@
 .product-section-card {
   display: flex;
   justify-content: center;
-  gap: 0px;
+  text-align: center;
+  align-items: center;
+  box-shadow: #e6e3e3 0px 0px 6px;
+  border-radius: 10px;
+
 }
 
 .product-image-card {
-  width: 300px;
-  height: 300px;
+  width: 13.75rem;
+  height: 18.88rem;
   margin: 0;
   align-items: center;
   justify-content: center;
   padding: 10px;
-  background-color: var(--color1);
+  background-color: var(--color5);
+  border-radius: 10px 0 0 10px;
 }
 
 .product-card-title{
-  font-size: 20px;
+  text-align: center;
+  font-size: 1.35rem;
   font-weight: bold;
   background-color: var(--color4);
   color: var(--color1);
 }
 
+.card-avarege{
+  background-color: var(--color1);
+  text-align: center;
+  color: var(--color4);
+  width: 30%;
+  height: 10%;
+  border-radius: 10px;
+  box-shadow: #000000 0px 0px 5px ;
+}
+
 .product-info-card{
   display: flex;
   flex-direction: column;
-  height: 275px;
-  padding-top: 30px;
-  gap: 30px;
+  height: 17.3125rem;
+  width: 50rem;
+  color: var(--color1);
+  gap: 1.875rem;
+  padding: 10px;
   justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  flex-wrap: wrap;
   background-color: var(--color4);
 
+}
+
+
+.product-detail-footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }

@@ -4,6 +4,7 @@ import './ProductDetail.css'
 import { formatPrice } from '../../utils/PriceFormatter';
 import Rating from '../Rating/Rating';
 import { ProductContext } from '../../contexts/CartContext/ProductContext'
+import  Footer  from '../Footer/Footer';
 
 function ProductDetail({ productId }) {
   const { products } = useContext(ProductContext)
@@ -38,17 +39,15 @@ function ProductDetail({ productId }) {
           <h1 className="product-card-title">{product.name}</h1>
           <div  className="product-info-card">
             <p>{product.description}</p>
-            {<p>Preço: {formatPrice(product.price)}</p>}
+            {<p style={{fontWeight:'bolder'}}>Preço: {formatPrice(product.price)}</p>}
+            <span className='card-avarege'>Avaliação Média: {ratingFormated || 'Nenhuma avaliação ainda'}</span>
           </div>
-
         </div>
-
+        <Rating productId={product.id} />
       </section>
-
-      <div>
-        <h3>Avaliação Média: {ratingFormated || 'Nenhuma avaliação ainda'}</h3>
-      </div>
-      <Rating productId={product.id} />
+      <footer className='product-detail-footer'>
+        <Footer  />
+      </footer>
     </div>
   );
 }

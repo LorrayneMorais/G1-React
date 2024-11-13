@@ -48,11 +48,12 @@ function Rating({ productId }) {
         ))}
       </div>
       <textarea
+        className='comment-area'
         placeholder="Escreva um comentário..."
         value={comment}
         onChange={(e) => setComment(e.target.value)}
       ></textarea>
-      <button onClick={handleRatingSubmit} disabled={isSubmitting}>
+      <button className='submit-average' onClick={handleRatingSubmit} disabled={isSubmitting}>
         {isSubmitting ? 'Enviando...' : 'Enviar Avaliação'}
       </button>
       {successMessage && <p className="success-message">{successMessage}</p>}
