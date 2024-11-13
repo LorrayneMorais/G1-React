@@ -1,0 +1,118 @@
+.container-final{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 10px;
+    width: 80%;
+    height: fit-content;
+    background: var(--color5);
+    border-radius: 10px 10px 0 0;
+}
+
+.button-final{
+    border: none;
+    width: 10%;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: var(--color4);
+    color: var(--color1);
+    cursor: pointer;
+    transition: all 0.2s;
+    transform: scale(1.1);
+    font-weight: bolder;
+}
+
+.button-final:active{
+    transform: scale(0.99);
+    color: var(--color4);
+    background-color: var(--color1);
+}
+
+.container-final:last-child{
+    border-radius: 0 0 10px 10px;
+    padding: 0 10px 10px 10px;
+
+}
+
+
+.title-order{
+    text-align: center;
+    width: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: var(--color2);
+}
+
+.container-all-info{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    background-color: var(--color1);
+    width: 100%;
+    height: 100%;
+
+}
+
+.container-card-info{
+    display: flex;
+    gap: 50px;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    border-bottom: 20px solid var(--color2);
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.container-card-info:last-child{
+    border-bottom: none;
+}
+
+.card-image-info{
+    padding: 20px;
+    display: flex;
+    min-width:350px;
+    min-width:350px;
+    max-height: 460px;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: var(--color1);
+}
+
+.card-image-info img{
+    max-height: 420px;
+    justify-content: left;
+
+}
+
+
+
+.card-final-info{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: var(--color1);
+    text-align: center ;
+    font-size: larger;
+    padding: 20px;
+    width: 100%;
+}
+.card-final-info-total{
+    display: flex;
+    font-size: 25px;
+    font-weight: bolder;
+    background-color: var(--color3);
+    margin: 0 ;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
+}
+

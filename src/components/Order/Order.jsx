@@ -1,28 +1,36 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import { formatPrice } from "../../utils/PriceFormatter";
+import './OrderStyle.css';
 export function Order({ id, total, products }) {
 
     return (
         <>
-            <div className="container-final">
-                <div>
+            <section className="container-final">
+                <div className="title-order">
                     <p>Pedido ID: {id}</p>
-
+                </div>
+                <div className="container-all-info">
                     {products.map((product) => (
-                        <div key={product.id}>
-                            <img
-                                src={product.imgUrl}
-                                alt={product.name}
-                            />
-                            <p>{product.name}</p>
-                            <p>Preço:{formatPrice(product.price)}</p>
-                            <p>Quantidade:{product.quantity}</p>
+                        <div key={product.id} className="container-card-info">
+                            <div className="card-image-info">
+                                <img
+                                    src={product.imgUrl}
+                                    alt={product.name}
+                                />
+                            </div>
+                            <div className="card-final-info">
+                                <span>{product.name}</span>
+                                <span>Quantidade: {product.quantity}</span>
+                                <span>Preço: {formatPrice(product.price)}</span>
+                            </div>
                         </div>
                     ))}
-                    <p>Total: {formatPrice(total)}</p>
+                    <div className="card-final-info-total">
+                        <span>Total do pedido: {formatPrice(total)}</span>
+                    </div>
                 </div>
-            </div>
+            </section>
         </>
 
     );

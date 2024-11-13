@@ -35,13 +35,17 @@ export function Final() {
 
     return (
         <section>
-            <div>
-                <button onClick={() => history.push('/')}>Voltar</button>
+            <div style={{ display:'flex', width:"100%", justifyContent:'left', alignItems:'center', padding:20}}>
+                <button className="button-final" onClick={() => history.push('/')}>Voltar</button>
             </div>
-            <h1>Meus Pedidos</h1>
-            {orders.map((order) => (
-                <Order key={order.id} id={order.id} total={order.total} products={order.products} />
-            ))}
+            <div style={{width:"100%", display:'flex', textAlign:'center', justifyContent:'center', padding:20}}>
+                <h1>Meus Pedidos</h1>
+            </div>
+            <section className='container-orders'>
+                {orders.map((order) => (
+                    <Order key={order.id} id={order.id} total={order.total} products={order.products} />
+                ))}
+            </section>
         </section>
     );
 }
