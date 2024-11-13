@@ -48,7 +48,8 @@
   text-decoration: none;
   text-align: center;
   background-color: var(--color2);
-  width: 10%;
+  width: 90%;
+  height: 50%;
   padding: 2px;
   color: #e6e3e3;
   border: none;
