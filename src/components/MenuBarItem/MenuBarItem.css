@@ -7,11 +7,16 @@
     gap: 10px;
 }
 
+.menu-item-button-container :hover {
+    background-color: var(--color3);
+}
+
 .menu-item-button-search {
-    background-color: transparent;
+    background-color: var(--color5);
     border: none;
-    padding: 0.7vh;
     border-radius: 20%;
+    padding: 11px;
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 8px;
     cursor: pointer
 }
 
@@ -28,16 +33,25 @@
 }
 
 .menu-categories {
-    margin-left: 25px;
+    margin-left: 1px;
     font-size: 15px;
     display: flex;
     flex-direction: row;
     text-align: center;
-    justify-content: space-between
+    justify-content: space-between;
+}
+
+.menu-categories label {
+    color: var(--color1);
+    font-weight: 300;
+    font-size: 18px;
+    text-align: center;
+    align-items: center;
 }
 
 .menu-categories input {
     margin: 0;
-    position: fixed;
+    height: 18px;
+    width: 18px;
     accent-color: var(--color1);
 }

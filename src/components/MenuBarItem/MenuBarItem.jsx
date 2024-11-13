@@ -85,9 +85,11 @@ export function MenuBarItem() {
         <section>
             <div className="menu-item-search">
                 <input type="text" placeholder="Procurar por gênero" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
-                <button type="submit" className="menu-item-button-search" onClick={handleButtonSearch}>
-                    <FaSearch className="menu-item-icon-search" />
-                </button>
+                <div className="menu-item-button-container" >
+                    <button type="submit" className="menu-item-button-search" onClick={handleButtonSearch}>
+                        <FaSearch className="menu-item-icon-search" />
+                    </button>
+                </div>
             </div>
             <br />
             <div>
