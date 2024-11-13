@@ -3,12 +3,13 @@ import { FaSearch } from "react-icons/fa";
 import './MenuBarItem.css';
 import { ProductContext } from '../../contexts/CartContext/ProductContext';
 
-
 export function MenuBarItem() {
     const { products, setProducts, setFilteredProducts } = useContext(ProductContext);
     const [categories, setCategories] = useState([]);
     const [categoryFilter, setCategoryFilter] = useState([]);
     const [shouldFilter, setShouldFilter] = useState(false);
+    const [searchValue, setSearchValue] = useState('');
+    const [searchResult, setSearchResult] = useState([]);
 
     const handleCategoryFilter = (event) => {
         const category = event.target.id;
@@ -36,7 +37,19 @@ export function MenuBarItem() {
             setFilteredProducts(filteredProducts);
         }
     };
-
+    const handleCategorySearch = () => {
+        const categoriesView = categories.filter((category) => {
+            if (category.toLowerCase().includes(searchValue.trim().toLowerCase())) {
+                return category
+            }
+        })
+        setSearchResult(categoriesView);
+    }
+    const handleButtonSearch = () => {
+        if (searchResult.length === 0) {
+            alert('Nenhuma categoria encontrada')
+        }
+    }
     useEffect(() => {
         if (shouldFilter) {
             filterProductsByCategory();
@@ -51,8 +64,12 @@ export function MenuBarItem() {
         handleProductsCategories();
     }, [products]);
 
-    const renderCategories = () => {
-        return categories.map((category, index) => {
+    useEffect(() => {
+        handleCategorySearch();
+    }, [searchValue]);
+
+    const renderCategories = (categoriesToRender) => {
+        return categoriesToRender.map((category, index) => {
             return (
                 <div className="menu-categories" key={index}>
                     <label htmlFor={category}>{category}</label>
@@ -63,17 +80,18 @@ export function MenuBarItem() {
         })
     }
 
+
     return (
         <section>
             <div className="menu-item-search">
-                <input type="text" placeholder="Procurar por gênero" />
-                <button className="menu-item-icon-search">
-                    <FaSearch />
+                <input type="text" placeholder="Procurar por gênero" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
+                <button type="submit" className="menu-item-button-search" onClick={handleButtonSearch}>
+                    <FaSearch className="menu-item-icon-search" />
                 </button>
             </div>
             <br />
             <div>
-                {renderCategories()}
+                {searchResult.length === 0 ? renderCategories(categories) : renderCategories(searchResult)}
             </div>
         </section>
     );

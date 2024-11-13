@@ -9,11 +9,9 @@ import { formatPrice } from '../../utils/PriceFormatter';
 import { SignUpContext } from '../../contexts/SignUpContext/SignUpContext';
 
 export function ProductCard({ data }) {
-    const { imgUrl, name, price, id, stockQuantity } = data;
-    const { cart, setCart } = useContext(ProductContext);
+    const { imgUrl, name, price, id } = data;
+    const { cart, setCart, maxQtd } = useContext(ProductContext);
     const { logged } = useContext(SignUpContext);
-
-
 
     const handleAddToCart = () => {
         if (!logged) {
@@ -26,8 +24,10 @@ export function ProductCard({ data }) {
         } else {
             setCart(cart.map((product) => {
                 if (product.id === id) {
-                    if (product.quantity + 1 > stockQuantity) return product
-                    return { ...product, quantity: product.quantity + 1 }
+                    if (product.quantity < maxQtd) {
+                        return { ...product, quantity: product.quantity + 1 }
+                    }
+                    return { ...product, quantity: product.quantity }
                 }
                 return product;
             }));
@@ -58,7 +58,7 @@ ProductCard.propTypes = {
         imgUrl: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
-        stockQuantity: PropTypes.number.isRequired
+        quantity: PropTypes.number.isRequired
     }).isRequired,
 };
 
