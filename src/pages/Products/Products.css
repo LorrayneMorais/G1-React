@@ -1,7 +1,23 @@
-.products{
-    padding: 120px 20px 50px;
+.products {
+    padding: 160px 20px 150px;
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     z-index: 0;
+}
+
+.header-products {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+}
+
+.footer-products {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./CartItem.css";
 import { TbTrashXFilled } from "react-icons/tb";
-
 import PropTypes from "prop-types";
 import { ProductContext } from "../../../contexts/CartContext/ProductContext";
 import { formatPrice } from "../../../utils/PriceFormatter";
+import { CiSquarePlus, CiSquareMinus } from "react-icons/ci";
 
 export function CartItem({ data }) {
 
@@ -57,9 +57,14 @@ export function CartItem({ data }) {
                 <div className="cart-item-qtd">
                     <div>
                         <h3 className="cart-item-price">{formatPrice(price)}</h3>
+                        <br />
+                        <div className="cart-button-qtd-container">
+                            <button ><CiSquareMinus /></button>
+                            <button><CiSquarePlus /></button>
+                        </div>
                     </div>
                     <div className="card__quantity">
-                        <input type="number" min={0} max={maxQtd} value={qtd} onChange={handleUpdateQuantity}></input>
+                        <input readOnly type="number" min={0} max={maxQtd} value={qtd} onChange={handleUpdateQuantity}></input>
                     </div>
                 </div>
                 <button type="button" className="button__remove-item" onClick={handleRemoveItem} >

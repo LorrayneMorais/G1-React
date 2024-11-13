@@ -38,9 +38,11 @@ export function Products() {
     return (
         (loading) ? <Loading /> :
             <div>
-                <Header />
-                <Cart />
-                <MenuBar />
+                <header className='header-products'>
+                    <Header />
+                    <Cart />
+                    <MenuBar />
+                </header>
                 {filteredProducts.length > 0 ? (
                     <section className="products container">
                         {filteredProducts.map((product) => (
@@ -63,7 +65,9 @@ export function Products() {
                     </section>
                 )
                 }
-                <Footer />
+                <footer className='footer-products'>
+                    <Footer />
+                </footer>
             </div >
     );
 }
