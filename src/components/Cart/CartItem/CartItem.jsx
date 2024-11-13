@@ -9,30 +9,22 @@ import { CiSquarePlus, CiSquareMinus } from "react-icons/ci";
 export function CartItem({ data }) {
 
     const { imgUrl, quantity, name, price, id } = data
-    const { cart, setCart, maxQtd, setMaxQtd, products } = useContext(ProductContext);
-    const [qtd, setQtd] = useState(quantity);
+    const { cart, setCart, maxQtd, setMaxQtd, products, cartQtd, setCartQtd } = useContext(ProductContext);
+    // const [qtd, setQtd] = useState(quantity);
 
     useEffect(() => {
-        setQtd(quantity);
+        setCartQtd(quantity);
     }, [quantity]);
 
-    const handleRemoveItem = () => {
+    const handleClearItem = () => {
         const newCart = cart.filter((product) => product.id !== id);
         setCart(newCart);
     };
 
-    const handleUpdateQuantity = (e) => {
-        setQtd(Number(e.target.value))
-        setCart(cart.map((product) => {
-            if (product.id === id) {
-                return { ...product, quantity: Number(e.target.value) }
-            }
-            return product;
-        }));
-        if (Number(e.target.value) === 0) {
-            handleRemoveItem();
-        }
-    };
+    console.log('cartQtd', cartQtd);
+    console.log('id ', id);
+    console.log('quantity', quantity);
+
 
     const maxQuantity = () => {
         const product = products.find((product) => product.id == id);
@@ -45,6 +37,30 @@ export function CartItem({ data }) {
         maxQuantity();
     }, [cart, products]);
 
+    const handleAddItem = () => {
+        if (cartQtd < maxQtd) {
+            setCartQtd(cartQtd + 1);
+            cart.map((item) => {
+                if (item.id === id) {
+                    item.quantity = cartQtd + 1
+                    return item
+                }
+                return item;
+            })
+        }
+    }
+    const handleRemoveItem = () => {
+        if (cartQtd - 1 >= 0) {
+            setCartQtd(cartQtd - 1);
+            cart.map((item) => {
+                if (item.id === id) {
+                    item.quantity = cartQtd - 1
+                    return item
+                }
+                return item;
+            })
+        }
+    }
 
     return (
         <section className="cart-item" key={id}>
@@ -59,15 +75,15 @@ export function CartItem({ data }) {
                         <h3 className="cart-item-price">{formatPrice(price)}</h3>
                         <br />
                         <div className="cart-button-qtd-container">
-                            <button ><CiSquareMinus /></button>
-                            <button><CiSquarePlus /></button>
+                            <button key='remove-btn' onClick={handleRemoveItem} ><CiSquareMinus /></button>
+                            <button key='add-btn' onClick={handleAddItem}><CiSquarePlus /></button>
                         </div>
                     </div>
                     <div className="card__quantity">
-                        <input readOnly type="number" min={0} max={maxQtd} value={qtd} onChange={handleUpdateQuantity}></input>
+                        <input readOnly min={0} max={maxQtd} value={cartQtd} ></input>
                     </div>
                 </div>
-                <button type="button" className="button__remove-item" onClick={handleRemoveItem} >
+                <button type="button" className="button__remove-item" onClick={handleClearItem} >
                     <TbTrashXFilled />
                 </button>
             </div>

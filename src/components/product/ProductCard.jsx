@@ -10,7 +10,7 @@ import { SignUpContext } from '../../contexts/SignUpContext/SignUpContext';
 
 export function ProductCard({ data }) {
     const { imgUrl, name, price, id } = data;
-    const { cart, setCart, maxQtd } = useContext(ProductContext);
+    const { cart, setCart, maxQtd, cartQtd, setCartQtd } = useContext(ProductContext);
     const { logged } = useContext(SignUpContext);
 
     const handleAddToCart = () => {
@@ -18,18 +18,19 @@ export function ProductCard({ data }) {
             alert('Você precisa estar logado para adicionar produtos ao carrinho');
             return;
         }
-        const productExists = cart.some((product) => product.id === id);
+        const productExists = cart.some((item) => item.id === id);
         if (!productExists) {
             setCart([...cart, { ...data, quantity: 1 }]);
         } else {
-            setCart(cart.map((product) => {
-                if (product.id === id) {
-                    if (product.quantity < maxQtd) {
-                        return { ...product, quantity: product.quantity + 1 }
+            setCart(cart.map((item) => {
+                if (item.id === id) {
+                    setCartQtd(item.quantity)
+                    if (item.quantity < maxQtd) {
+                        item.quantity = cartQtd + 1
+                        return item
                     }
-                    return { ...product, quantity: product.quantity }
+                    return item
                 }
-                return product;
             }));
         }
     }

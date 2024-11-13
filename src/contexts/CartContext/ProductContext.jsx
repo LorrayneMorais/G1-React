@@ -17,8 +17,7 @@ const ProductProvider = ({ children }) => {
     const [isMenuVisible, setIsMenuVisible] = useState(false);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [maxQtd, setMaxQtd] = useState(0);
-
-
+    const [cartQtd, setCartQtd] = useState(0);
 
     return (
         <ProductContext.Provider value={{
@@ -49,7 +48,9 @@ const ProductProvider = ({ children }) => {
             filteredProducts,
             setFilteredProducts,
             maxQtd,
-            setMaxQtd
+            setMaxQtd,
+            cartQtd,
+            setCartQtd
         }}>
             {children}
         </ProductContext.Provider>

@@ -18,8 +18,6 @@ const Header = () => {
 
     const handleUser = async () => {
         const { name } = await getUserById(userId)
-        console.log(userId);
-
         setUserName(name)
     }
 
@@ -45,17 +43,17 @@ const Header = () => {
                     }
                 </div>
                 {logged &&
-                <Link className="user-pedidos" to={`/final/${userId}`}>
-                    <RiFileList3Line  style={{ fontSize: '26px' }}/>
-                    <span className="buttom-link-pedidos">
-                        Meus pedidos
-                    </span>
-                </Link>
+                    <Link className="user-pedidos" to={`/final/${userId}`}>
+                        <RiFileList3Line style={{ fontSize: '26px' }} />
+                        <span className="buttom-link-pedidos">
+                            Meus pedidos
+                        </span>
+                    </Link>
                 }
             </div>
-                <div>
-                    <CartButton />
-                </div>
+            <div>
+                <CartButton />
+            </div>
         </header>
     );
 };
