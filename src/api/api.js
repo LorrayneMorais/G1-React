@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+//mudei a url da API
 const api = axios.create({
     baseURL: 'https://api-gp1-react.onrender.com',
 });
