@@ -5,12 +5,11 @@ import { getAllProducts } from '../../api/api';
 import { ProductContext } from '../../contexts/CartContext/ProductContext';
 import { Loading } from '../../components/Loading/Loading';
 import Header from '../../components/header/Header'
-// import  Footer  from '../../components/Footer/Footer'
+import  Footer  from '../../components/Footer/Footer'
 import { Cart } from '../Cart/Cart';
 import { MenuBar } from '../MenuBar/MenuBar';
 // import { BsHandIndexThumb } from 'react-icons/bs';
 
-const Footer = React.lazy(() => import('../../components/Footer/Footer'));
 
 export function Products() {
     const { products, setProducts, loading, setLoading, filteredProducts } = useContext(ProductContext);
