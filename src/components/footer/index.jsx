@@ -5,7 +5,7 @@ import linkedinIcon from "../../assets/images/linkedin.png";
 import instagramIcon from "../../assets/images/insta.png";
 import githubIcon from "../../assets/images/git.png";
 
-const Footer = () => {
+export function Footer ()  {
     return (
         <footer className="footer">
             <div className="footer-section logo-section">
@@ -32,5 +32,3 @@ const Footer = () => {
         </footer>
     );
 };
-
-export default Footer;
