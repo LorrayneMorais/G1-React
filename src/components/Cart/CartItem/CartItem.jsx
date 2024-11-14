@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./CartItem.css";
+import './CartItem.css';
 import { TbTrashXFilled } from "react-icons/tb";
 import PropTypes from "prop-types";
 import { ProductContext } from "../../../contexts/CartContext/ProductContext";
