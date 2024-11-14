@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://api-gp1-react.onrender.com/',
+    baseURL: 'https://api-gp1-react.onrender.com',
 });
 
 export const getAllProducts = async () => {
