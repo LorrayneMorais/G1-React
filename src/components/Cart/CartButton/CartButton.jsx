@@ -7,13 +7,13 @@ import { ProductContext } from "../../../contexts/CartContext/ProductContext";
 
 
 export function CartButton() {
-    const {cart, isCartVisible, setIsCartVisible} = useContext(ProductContext);
     const handleCart = () => {
         if(cart.length == 0) {
             alert("Adcione um produto ao carrinho");
         }
         setIsCartVisible(!isCartVisible);
     }
+    const {cart, isCartVisible, setIsCartVisible} = useContext(ProductContext);
     return (
         <button type="button" onClick={handleCart} className="cart__button">
             <AiOutlineShoppingCart/>

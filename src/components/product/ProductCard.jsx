@@ -13,28 +13,32 @@ export function ProductCard({ data }) {
     const { cart, setCart, maxQtd, cartQtd, setCartQtd } = useContext(ProductContext);
     const { logged } = useContext(SignUpContext);
 
+    
     const handleAddToCart = () => {
         if (!logged) {
             alert('Você precisa estar logado para adicionar produtos ao carrinho');
             return;
         }
-        const productExists = cart.some((item) => item.id === id);
+
+        const productExists = cart.find((item) => item.id === id);
+        
         if (!productExists) {
+            // Se o produto não existir no carrinho, adiciona com quantidade inicial de 1
             setCart([...cart, { ...data, quantity: 1 }]);
         } else {
-            setCart(cart.map((item) => {
+            // Se o produto já existe no carrinho, incrementa a quantidade
+            const updatedCart = cart.map((item) => {
                 if (item.id === id) {
-                    setCartQtd(item.quantity)
-                    if (item.quantity < maxQtd) {
-                        item.quantity = cartQtd + 1
-                        return item
-                    }
-                    return item
+                    // Verifica se a quantidade ainda está abaixo do máximo permitido
+                    const updatedQuantity = item.quantity < maxQtd ? item.quantity + 1 : item.quantity;
+                    return { ...item, quantity: updatedQuantity };
                 }
-            }));
+                return item;
+            });
+
+            setCart(updatedCart);
         }
     }
-
 
     return (
         <section className="products-card" key={id}>

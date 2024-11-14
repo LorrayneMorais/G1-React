@@ -4,6 +4,7 @@ import './index.css'
 import App from './App'
 import { SignupProvider } from './contexts/SignUpContext/SignUpContext'
 import { ProductProvider } from './contexts/CartContext/ProductContext';
+import { CartButton } from './components/Cart/CartButton/CartButton'
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>

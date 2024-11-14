@@ -9,8 +9,8 @@ import { CiSquarePlus, CiSquareMinus } from "react-icons/ci";
 export function CartItem({ data }) {
 
     const { imgUrl, quantity, name, price, id } = data
-    const { cart, setCart, maxQtd, setMaxQtd, products, cartQtd, setCartQtd } = useContext(ProductContext);
-    // const [qtd, setQtd] = useState(quantity);
+    const { cart, setCart, maxQtd, setMaxQtd, products } = useContext(ProductContext);
+    const [cartQtd, setCartQtd] = useState(quantity);
 
     useEffect(() => {
         setCartQtd(quantity);
@@ -21,9 +21,6 @@ export function CartItem({ data }) {
         setCart(newCart);
     };
 
-    console.log('cartQtd', cartQtd);
-    console.log('id ', id);
-    console.log('quantity', quantity);
 
 
     const maxQuantity = () => {
@@ -39,28 +36,30 @@ export function CartItem({ data }) {
 
     const handleAddItem = () => {
         if (cartQtd < maxQtd) {
-            setCartQtd(cartQtd + 1);
-            cart.map((item) => {
+            const newQuantity = cartQtd + 1;
+            setCartQtd(newQuantity);  // Atualiza o estado local
+            setCart(prevCart => prevCart.map(item => {
                 if (item.id === id) {
-                    item.quantity = cartQtd + 1
-                    return item
+                    return { ...item, quantity: newQuantity };  // Atualiza o carrinho com a nova quantidade
                 }
                 return item;
-            })
+            }));
         }
     }
+    
     const handleRemoveItem = () => {
-        if (cartQtd - 1 >= 0) {
-            setCartQtd(cartQtd - 1);
-            cart.map((item) => {
+        if (cartQtd > 1) {
+            const newQuantity = cartQtd - 1;
+            setCartQtd(newQuantity);  // Atualiza o estado local
+            setCart(prevCart => prevCart.map(item => {
                 if (item.id === id) {
-                    item.quantity = cartQtd - 1
-                    return item
+                    return { ...item, quantity: newQuantity };  // Atualiza o carrinho com a nova quantidade
                 }
                 return item;
-            })
+            }));
         }
     }
+
 
     return (
         <section className="cart-item" key={id}>
@@ -80,7 +79,7 @@ export function CartItem({ data }) {
                         </div>
                     </div>
                     <div className="card__quantity">
-                        <input readOnly min={0} max={maxQtd} value={cartQtd} ></input>
+                        <span  min={0} max={maxQtd} >{cartQtd ?? 0}</span>
                     </div>
                 </div>
                 <button type="button" className="button__remove-item" onClick={handleClearItem} >
