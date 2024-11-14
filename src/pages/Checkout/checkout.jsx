@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import api from "../../api/api";
-import "./Checkout.css";
+import "./checkout.css";
 import { ProductContext } from "../../contexts/CartContext/ProductContext";
 import { SignUpContext } from "../../contexts/SignUpContext/SignUpContext";
 
