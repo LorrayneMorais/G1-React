@@ -9,8 +9,8 @@ import { CiSquarePlus, CiSquareMinus } from "react-icons/ci";
 export function CartItem({ data }) {
 
     const { imgUrl, quantity, name, price, id } = data
-    const { cart, setCart, maxQtd, setMaxQtd, products } = useContext(ProductContext);
-    const [cartQtd, setCartQtd] = useState(quantity);
+    const { cart, setCart, maxQtd, setMaxQtd, products, cartQtd, setCartQtd } = useContext(ProductContext);
+    // const [qtd, setQtd] = useState(quantity);
 
     useEffect(() => {
         setCartQtd(quantity);
@@ -79,7 +79,7 @@ export function CartItem({ data }) {
                         </div>
                     </div>
                     <div className="card__quantity">
-                        <span  min={0} max={maxQtd} >{cartQtd ?? 0}</span>
+                        <span  min={0} max={maxQtd} >{quantity ?? 0}</span>
                     </div>
                 </div>
                 <button type="button" className="button__remove-item" onClick={handleClearItem} >

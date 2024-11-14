@@ -10,7 +10,7 @@ import { SignUpContext } from '../../contexts/SignUpContext/SignUpContext';
 
 export function ProductCard({ data }) {
     const { imgUrl, name, price, id } = data;
-    const { cart, setCart, maxQtd, cartQtd, setCartQtd } = useContext(ProductContext);
+    const { cart, setCart, maxQtd } = useContext(ProductContext);
     const { logged } = useContext(SignUpContext);
 
     
