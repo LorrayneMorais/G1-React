@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 import "./Cart.css";
-import { CartItem } from "../../components/cart/CartItem/CartItem";
+import { CartItem } from "../../components/Cart/CartItem/CartItem";
 import { ProductContext } from "../../contexts/CartContext/ProductContext";
 import { formatPrice } from "../../utils/PriceFormatter";
 import { useHistory } from "react-router-dom";
