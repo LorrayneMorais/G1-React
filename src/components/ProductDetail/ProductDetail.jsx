@@ -4,7 +4,7 @@ import './ProductDetail.css'
 import { formatPrice } from '../../utils/PriceFormatter';
 import Rating from '../Rating/Rating';
 import { ProductContext } from '../../contexts/CartContext/ProductContext'
-import  Footer  from '../Footer/Footer';
+import  Footer  from '../Footer/Footer.jsx';
 
 function ProductDetail({ productId }) {
   const { products } = useContext(ProductContext)
