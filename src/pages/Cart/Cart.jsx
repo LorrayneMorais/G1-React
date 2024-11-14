@@ -35,7 +35,7 @@ export function Cart() {
                     }
                     <br />
                     <div className="cart-contents">
-                        {cart.map((product) => <CartItem key={product.id} data={{ id: Number(product.id), imgUrl: product.imgUrl, name: product.name, price: product.price, quantity: product.quantity }} />)}
+                        {cart.length > 0 && cart.map((product) => <CartItem key={product.id} data={{ id: Number(product.id), imgUrl: product.imgUrl, name: product.name, price: product.price, quantity: product.quantity }} />)}
                     </div>
                     <div className="cart-resume">
                         <h3>Total</h3>
